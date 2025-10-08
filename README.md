@@ -136,3 +136,26 @@ Open the Frontend Folder: In VS Code, navigate to the FrontendTripzo/ directory.
 Launch index.html: Right-click on the main entry file, index.html, and select "Open with Live Server".
 
 Access the Application: Your default web browser will open a new tab, and the Tripzo application will be ready for use! 🚀
+
+Step 5: Generate an App Password for Gmail 🔑
+Since your backend uses Nodemailer to send email OTPs and Gmail requires 2-Step Verification for external apps, you must generate a special App Password instead of using your main account password.
+
+Enable 2-Step Verification: If you haven't already, go to your Google Account Security settings and ensure 2-Step Verification is turned On.
+
+Go to App Passwords: On the same Security page, find the "App passwords" section (under "How you sign in to Google") and click on it. You will need to re-authenticate.
+
+Generate Password:
+
+In the "Select app" dropdown, choose "Other (Custom name...)".
+
+Enter a name like Tripzo-App and click "Generate".
+
+Copy the Password: Google will display a 16-character password in a yellow box. Copy this password immediately. This is the only time you will see it.
+
+Update .env: Go back to your BackendTripzo/.env file and use this 16-character code as the value for the EMAIL_PASS variable.
+
+Bash
+
+# Example updated .env file entry
+EMAIL_PASS="abcd efgh ijkl mnop" # Replace with your generated password, spaces are optional
+After updating the .env file, you may need to stop and restart your backend server (npm start) to load the new credentials. Once complete, the user authentication and email OTP verification features will work correctly!
