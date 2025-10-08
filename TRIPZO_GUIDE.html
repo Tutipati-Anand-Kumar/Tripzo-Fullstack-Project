@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tripzo Project Setup Guide</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #333; /* Dark background for contrast */
+            color: #F8F8FF; /* Default light color for general text */
+            padding: 20px;
+            margin: 0;
+        }
+        h1 { color: #00BFFF; font-size: 2.2em; border-bottom: 3px solid #00BFFF; padding-bottom: 10px; }
+        h2 { color: #FF6347; font-size: 1.8em; border-bottom: 2px solid #FF6347; padding-bottom: 5px; margin-top: 30px; }
+        h3 { color: #00BFFF; font-size: 1.4em; margin-top: 20px; }
+        .yellow { color: #FFD700; font-weight: bold; }
+        .green-light { color: #90EE90; }
+        .light-blue { color: #E0FFFF; }
+        .sub-heading { color: #FFD700; font-size: 1.2em; font-weight: 600; margin-top: 15px; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            background-color: #444;
+        }
+        th, td {
+            border: 1px solid #666;
+            padding: 10px;
+            text-align: left;
+            color: #F5F5F5;
+        }
+        th {
+            background-color: #555;
+            color: #ADFF2F;
+            font-weight: bold;
+        }
+        a { color: #87CEEB; text-decoration: none; }
+        a:hover { text-decoration: underline; }
+        pre {
+            background: #222;
+            color: #00FF7F;
+            padding: 15px;
+            border-radius: 8px;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+            font-size: 0.95em;
+            margin: 10px 0;
+        }
+        .code-block { color: #ADFF2F; }
+        .important { color: #FFD700; font-weight: bold; }
+    </style>
+</head>
+<body>
+
+<h1 style="color:#00BFFF;">🗺️ TRIPZO_GUIDE.html: The Ultimate Project Setup Guide 🚀</h1>
+
+<p><span class="yellow">Welcome to the <b>Tripzo</b> project!</span> This comprehensive guide walks a beginner through every step: setting up the environment, getting necessary keys, running the application locally, pushing to GitHub, and finally, deploying the frontend globally using <b>Netlify</b>.</p>
+
+<p><span class="green-light">Follow these steps exactly, and you'll be up and running in no time!</span></p>
+
+<hr/>
+
+<h2 style="color:#FF6347;">🌟 Section A: Project Overview & Core Files</h2>
+
+<h3 style="color:#1E90FF;">Tripzo - Your Next Travel Adventure Planner ✈️</h3>
+
+<p>Tripzo is a full-stack web application designed to simplify travel planning, booking, and user management.</p>
+
+<h3 class="sub-heading" style="color:#FFD700;">✨ Key Features</h3>
+
+<ul class="light-blue">
+    <li><b>User Authentication:</b> Secure registration and login using <b>JWT</b> and <b>email OTP verification</b>.</li>
+    <li><b>Dynamic Booking:</b> Real-time price calculation based on trip details, members, nights, and available discounts.</li>
+    <li><b>AI Travel Assistant (Myra):</b> Integrated <b>Gemini-powered chatbot</b> for quick weather, distance, flight, and hotel inquiries.</li>
+    <li><b>Trip Management:</b> Users can view confirmed and pending bookings.</li>
+</ul>
+
+<h3 class="sub-heading" style="color:#ADFF2F;">🛠️ Tech Stack</h3>
+
+<table>
+    <tr><th>Component</th><th>Technology</th><th>Description</th></tr>
+    <tr><td><b>Backend</b></td><td>Node.js, Express.js</td><td>Core server logic and API endpoints.</td></tr>
+    <tr><td><b>Database</b></td><td>MongoDB (Mongoose)</td><td>Data storage for Users, Trips, Hotels, and Bookings.</td></tr>
+    <tr><td><b>Frontend</b></td><td>HTML, CSS, JavaScript</td><td>Responsive user interface.</td></tr>
+    <tr><td><b>AI/APIs</b></td><td>Google Gemini, OpenWeatherMap, MapQuest</td><td>External service integrations.</td></tr>
+</table>
+
+<hr/>
+
+<h2 style="color:#FF6347;">🛠️ Section B: Essential Prerequisites (First Time Setup) 💻</h2>
+
+<p>You only need to install these tools once on your computer!</p>
+
+<table>
+    <tr><th>Tool</th><th>Action</th><th>Command/Link</th></tr>
+    <tr><td><b>Node.js & npm</b></td><td>Install Node.js (which includes npm).</td><td><a href="https://nodejs.org/en/download">🔗 Download Node.js</a></td></tr>
+    <tr><td><b>Git</b></td><td>Install Git to manage and clone the code.</td><td><a href="https://git-scm.com/downloads">🔗 Download Git</a></td></tr>
+    <tr><td><b>VS Code</b></td><td>Download and install your code editor.</td><td><a href="https://code.visualstudio.com/">🔗 Download VS Code</a></td></tr>
+    <tr><td><b>VS Code Extension</b></td><td><b>Live Server</b> (Run frontend HTML files locally).</td><td>Search Extensions: <span class="code-block">Live Server</span></td></tr>
+    <tr><td><b>VS Code Extension</b></td><td><b>MongoDB</b> (Optional: view your database).</td><td>Search Extensions: <span class="code-block">MongoDB VS Code Extension</span></td></tr>
+</table>
+
+<hr/>
+
+<h2 style="color:#FF6347;">🔑 Section C: API Key & Secrets Acquisition (Gather Your Credentials) 🤫</h2>
+
+<p>You must gather these unique keys and credentials to connect your project to essential services.</p>
+
+<h3 class="sub-heading">1. ☁️ MongoDB Atlas Connection String (<span class="code-block">MONGO_URI</span>)</h3>
+
+<ol class="light-blue">
+    <li>Create an account and cluster on <b>MongoDB Atlas</b>.</li>
+    <li>Set up a <b>Database Access User</b> (e.g., <span class="code-block">my_tripzo_user</span>).</li>
+    <li>Configure <b>Network Access</b> to allow your IP address.</li>
+    <li>Copy the connection string and replace the <span class="code-block">&lt;username&gt;</span> and <span class="code-block">&lt;password&gt;</span> placeholders.</li>
+</ol>
+
+<h3 class="sub-heading">2. 🛡️ JWT Secret (<span class="code-block">JWT_SECRET</span>)</h3>
+
+<ol class="light-blue">
+    <li>Generate a long, random key (e.g., a 64-character hex key) for authentication token security.</li>
+</ol>
+
+<h3 class="sub-heading">3. 📧 Google App Password (<span class="code-block">EMAIL_PASS</span>) for OTP Service</h3>
+
+<ol class="light-blue">
+    <li>Go to <a href="https://myaccount.google.com/security">Google Account Security</a>.</li>
+    <li>Ensure <b>2-Step Verification</b> is <b>ON</b>.</li>
+    <li>Go to <b>App Passwords</b> → select <b>Mail</b> and <b>Other (Tripzo App)</b>.</li>
+    <li>Click <b>Generate</b>. The 16-character code is your <span class="code-block">EMAIL_PASS</span>.</li>
+</ol>
+
+<h3 class="sub-heading">4. 🤖 External API Keys</h3>
+
+<table>
+    <tr><th>Service</th><th>Key Name</th><th>How to Get It</th></tr>
+    <tr><td>Google Gemini AI</td><td><span class="code-block">GEMINI_API_KEY</span></td><td><a href="https://ai.google.dev/gemini-api/docs/api-key">Google AI Studio</a></td></tr>
+    <tr><td>OpenWeatherMap</td><td><span class="code-block">OPENWEATHER_API_KEY</span></td><td><a href="https://openweathermap.org/api">OpenWeatherMap API</a></td></tr>
+    <tr><td>MapQuest</td><td><span class="code-block">MAPQUEST_API_KEY</span></td><td><a href="https://developer.mapquest.com/">MapQuest Developer Portal</a></td></tr>
+</table>
+
+<hr/>
+
+<h2 style="color:#FF6347;">💾 Section D: Project Initialization & Database Seeding ✨</h2>
+
+<h3 class="sub-heading">Step 1: Clone and Prepare Repository</h3>
+
+<ol class="light-blue">
+    <li>Open your terminal and clone your GitHub repository:</li>
+
+<pre>
+git clone &lt;Your-GitHub-Repo-URL&gt;
+cd Tripzo
+</pre>
+
+    <li>Create <span class="code-block">.gitignore</span> file in the <span class="important">root folder (/Tripzo)</span> and paste this content:</li>
+
+<pre style="color: #ADFF2F;">
+# Dependencies
+/BackendTripzo/node_modules
+
+# Environment variables (SENSITIVE DATA)
+/BackendTripzo/.env
+
+# Logs and temp
+npm-debug.log*
+
+# IDE and system files
+.vscode/
+.DS_Store
+Thumbs.db
+</pre>
+
+    <li>Create <span class="code-block">.env</span> file in <span class="important">BackendTripzo</span> and add your keys:</li>
+
+<pre style="color: #87CEEB;">
+MONGO_URI=&lt;YOUR_MONGO_URI&gt;
+JWT_SECRET=&lt;YOUR_LONG_JWT_SECRET&gt;
+PORT=3000
+
+EMAIL_USER=anandk85260@gmail.com
+EMAIL_PASS=&lt;YOUR_APP_PASSWORD&gt;
+
+GEMINI_API_KEY=&lt;YOUR_GEMINI_API_KEY&gt;
+OPENWEATHER_API_KEY=&lt;YOUR_OPENWEATHER_API_KEY&gt;
+MAPQUEST_API_KEY=&lt;YOUR_MAPQUEST_API_KEY&gt;
+</pre>
+</ol>
+
+<h3 class="sub-heading">Step 2: Install Backend Dependencies</h3>
+
+<pre style="color: #00FF7F;">
+cd BackendTripzo
+npm install
+</pre>
+
+<h3 class="sub-heading">Step 3: Seed the Database</h3>
+
+<pre style="color: #FFD700;">
+node seed.js
+# ✅ Wait for the success message to confirm the database is ready.
+</pre>
+
+<hr/>
+
+<h2 style="color:#FF6347;">🟢 Section E: Running the Application Locally</h2>
+
+<h3 class="sub-heading">Step 1: Start Backend Server</h3>
+
+<pre style="color: #ADFF2F;">
+npm run dev
+# Expected: "Server running: http://localhost:3000"
+</pre>
+
+<h3 class="sub-heading">Step 2: Run Frontend Application</h3>
+
+<ol class="light-blue">
+    <li>Open VS Code, navigate to <b>FrontendTripzo</b>.</li>
+    <li>Right-click <b>index.html</b> &rarr; select <b>Open with Live Server</b>.</li>
+</ol>
+
+<p><span class="yellow">🎉 Your project is now running locally!</span></p>
+
+<hr/>
+
+<h2 style="color:#FF6347;">📤 Section F: Pushing to GitHub (Version Control)</h2>
+
+<p>Ensure you are back in the <span class="important">root folder (/Tripzo)</span> before running these commands.</p>
+
+<pre style="color: #00FF7F;">
+# Initialize Git (if not done)
+git init
+# Stage all files (excluding .env and node_modules thanks to .gitignore)
+git add .
+# Commit the changes
+git commit -m "feat: initial commit of tripzo full-stack project"
+# Link to your empty GitHub repository
+git remote add origin &lt;Your-GitHub-Repo-URL&gt;
+git branch -M main
+# Push the code to GitHub
+git push -u origin main
+</pre>
+
+<p><span class="yellow">✅ Your code is now live on GitHub!</span></p>
+
+<hr/>
+
+<h2 style="color:#FF6347;">🌐 Section G: Global Deployment with Netlify (Frontend Only)</h2>
+
+<p>Netlify is the easiest way to deploy your static frontend for worldwide access.</p>
+
+<h3 class="sub-heading">Step 1: Netlify Account Setup</h3>
+<ol class="light-blue">
+    <li>Go to <a href="https://www.netlify.com/">Netlify</a> and click <b>Sign Up</b>.</li>
+    <li>Select <b>GitHub</b> to connect your account and authorize access to your repositories.</li>
+</ol>
+
+<h3 class="sub-heading">Step 2: Import Project from GitHub</h3>
+<ol class="light-blue">
+    <li>Click <b>"Add new site"</b> &rarr; <b>"Import an existing project"</b>.</li>
+    <li>Select **GitHub** and find your **Tripzo** repository from the list.</li>
+</ol>
+
+<h3 class="sub-heading">Step 3: Configure Deployment Settings</h3>
+
+<table>
+    <tr><th>Setting</th><th>Value</th><th>Explanation</th></tr>
+    <tr><td>Owner</td><td>Your GitHub Username</td><td>Default value</td></tr>
+    <tr><td>Branch to deploy</td><td>main</td><td>The production branch</td></tr>
+    <tr><td>Base directory</td><td>Leave empty</td><td>The root of your repository</td></tr>
+    <tr><td>Build command</td><td>Leave empty</td><td>No build process is required for static HTML/CSS/JS</td></tr>
+    <tr><td>Publish directory</td><td><span class="code-block">FrontendTripzo</span></td><td><b>Crucial:</b> Tells Netlify which folder contains the public website files.</td></tr>
+</table>
+
+<h3 class="sub-heading">Step 4: Deploy and Go Live!</h3>
+<p>Click the <b>“Deploy site”</b> button.</p>
+
+<p><span class="yellow">Netlify will give you a unique URL where your Frontend is live (e.g., <code>https://random-name-12345.netlify.app</code>).</span></p>
+
+<h3 class="sub-heading">Step 5: Final Steps for a Fully Functional Live App</h3>
+
+<p class="light-blue">Since your Netlify site is still looking for the backend on your local machine, you must complete this final step:</p>
+<ul class="light-blue">
+    <li>Deploy your <b>BackendTripzo</b> to a live Node.js hosting service (e.g., Render or Railway) to get a production API URL (e.g., <code>https://tripzo-api-live.com</code>).</li>
+    <li>Update the frontend code: **Search and replace** all instances of <span class="code-block">http://localhost:3000</span> with your new live API URL in the frontend files (e.g., in <span class="code-block">services.html</span> and <span class="code-block">index.html</span>).</li>
+    <li>Commit and push these final frontend changes to GitHub. Netlify will auto-update, and the full application will be functional globally!</li>
+</ul>
+
+</body>
+</html>
