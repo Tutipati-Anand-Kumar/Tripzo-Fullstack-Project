@@ -8,7 +8,7 @@ const path = require("path");
 
 dotenv.config();
 
-// --- Debug environment (optional) ---
+//TODO - Debug environment (optional):
 console.log("=== ENVIRONMENT DEBUG ===");
 console.log("MONGO_URI exists:", !!process.env.MONGO_URI);
 console.log("EMAIL_USER:", process.env.EMAIL_USER);
@@ -107,3 +107,5 @@ process.on("SIGINT", () => {
   console.log("👋 SIGINT, shutting down");
   server.close(() => console.log("✅ Process terminated"));
 });
+
+module.exports = app;
