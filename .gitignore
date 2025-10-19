@@ -1,9 +1,8 @@
 # Dependencies
-/BackendTripzo/node_modules
-/FrontendTripzo/node_modules
+/backend_tripzo/node_modules
 
 # Environment variables (SENSITIVE DATA)
-/BackendTripzo/.env
+/backend_tripzo/.env
 
 # Logs and other temporary files
 npm-debug.log*

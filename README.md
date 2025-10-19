@@ -14,11 +14,11 @@ Tripzo is a full-stack web application designed to simplify travel planning, boo
 
 ## 🛠️ Tech Stack
 
-### Frontend (`FrontendTripzo/`)
+### Frontend (`frontend_tripzo/`)
 * **Languages:** HTML5, CSS3 (with media queries for responsiveness), JavaScript (ES6+).
 * **Libraries:** Remixicon (for icons).
 
-### Backend (`BackendTripzo/`)
+### Backend (`backend_tripzo/`)
 * **Runtime:** Node.js
 * **Framework:** Express.js
 * **Database:** MongoDB (via Mongoose ODM)
@@ -71,14 +71,14 @@ Navigate into the backend directory and install all required Node.js packages.
 Bash
 
 # 3. Navigate into the backend directory
-cd BackendTripzo
+cd backend_tripzo
 
 # 4. Install all backend dependencies (Node.js packages like express, mongoose, bcryptjs, etc.)
 npm install
 2.2 Set Up Environment Variables
 Create a configuration file to store your sensitive keys and credentials.
 
-Create .env file: In the root of the BackendTripzo/ directory, create a new file named .env.
+Create .env file: In the root of the backend_tripzo/ directory, create a new file named .env.
 
 Add Configuration: Paste the following structure into the .env file and replace the placeholder values with your actual credentials.
 
@@ -108,7 +108,7 @@ EMAIL_PASS: The application-specific password for the email account.
 
 Bash
 
-# .env file content structure (inside BackendTripzo/)
+# .env file content structure (inside backend_tripzo/)
 PORT=5000
 MONGODB_URI="<YOUR_MONGO_DB_CONNECTION_STRING>"
 JWT_SECRET="<YOUR_LONG_AND_COMPLEX_SECRET_KEY>"
@@ -124,14 +124,14 @@ Start the Node.js server to handle API requests and database interactions.
 
 Bash
 
-# 5. Start the backend server (ensure you are still in the BackendTripzo/ directory)
+# 5. Start the backend server (ensure you are still in the backend_tripzo/ directory)
 npm start
 
 # Success: You should see a console message confirming the server is running and connected to MongoDB.
 Step 4: Run the Frontend Application
 The frontend is a static application, which you can run using the recommended Live Server VS Code extension.
 
-Open the Frontend Folder: In VS Code, navigate to the FrontendTripzo/ directory.
+Open the Frontend Folder: In VS Code, navigate to the frontend_tripzo/ directory.
 
 Launch index.html: Right-click on the main entry file, index.html, and select "Open with Live Server".
 
@@ -152,7 +152,7 @@ Enter a name like Tripzo-App and click "Generate".
 
 Copy the Password: Google will display a 16-character password in a yellow box. Copy this password immediately. This is the only time you will see it.
 
-Update .env: Go back to your BackendTripzo/.env file and use this 16-character code as the value for the EMAIL_PASS variable.
+Update .env: Go back to your backend_tripzo/.env file and use this 16-character code as the value for the EMAIL_PASS variable.
 
 Bash
 

@@ -73,7 +73,7 @@
         nav {
         position: absolute;
         top: 0;
-        left: 50%;
+        left: 58%;
         transform: translateX(-50%);
         padding: 2rem 1rem;
         width: 100%;
@@ -1235,6 +1235,77 @@
         height: 140px;
     }
 }
+@media (min-width:340px) and (max-width:900px) {
+  
+    .header__content{
+        position: absolute;
+        bottom: 15% ;
+    }
+    
+    .section__container .journey__grid{
+        position: relative;
+        top: -120px !important;
+    } 
+    .virtual-tour-container{
+        position: relative;
+        top: -100px !important;
+    }
+    .section__container iframe{
+        position: relative;
+        top: -50px !important;
+    }
+    .banner__container{
+        position: relative;
+        top: -90px !important;
+    }
+    .section__container .section__title{
+        position: relative;
+        top: -70px !important;
+    }
+     .section__container .section__subtitle{
+        position: relative;
+        top: -70px !important;
+    }
+    .section__container .display__grid{
+        position: relative;
+        top: -120px !important;
+    }
+    footer{
+        position: relative;
+        top: -150px !important;
+        margin:0 10px ;
+    }
+    footer .section__container{
+        position: relative;
+        top: -10px !important;
+    }
+    .display__container{
+        position: relative;
+        top: -80px !important;
+    }
+
+    .mobile-nav-overlay.active{
+        width: 170px;
+        height: 160px;
+    }
+    .myraIcon{
+        position: relative;
+        bottom: -40px !important;
+    }
+    .chat-container{
+        width: 280px !important;
+    }
+    .mobile-nav-content a{
+        font-size: small;
+    }
+}
+@media (max-width:1024px) {
+     .header__content{
+        position: absolute;
+        bottom: 15% ;
+    }
+    
+}
 
 @media (min-width: 769px) and (max-width: 999px) {
     .chat-container {
@@ -1311,8 +1382,9 @@
     
 }
 @media (min-width:300px) and (max-width:450px) {
-    #book-now-btn{
-        margin-bottom: -160px;
+    .header__content{
+        position: absolute;
+        bottom: 15% ;
     }
 }
 
@@ -1393,27 +1465,53 @@
         top: 38px;
     }
 }
+@media (min-width:1400px) and (max-width:1600px){
+    .logo{
+        position: relative;
+        left: -280px;
+    }
+}
+@media (min-width:1200px) and (max-width:1335px){
+    .logo{
+        position: relative;
+        left: -200px;
+    }
+}
+@media (min-width:1335px) and (max-width:1400px){
+    .logo{
+        position: relative;
+        left: -190px;
+    }
+}
+@media (min-width:715px) and (max-width:1200px){
+    .logo{
+        position: relative;
+        left: 0px;
+    }
+}
 
-@media (min-width:715px) and (max-width:1300px){
-    .logo{
-        position: relative;
-        top: -22px;
-        left: -10px;
-    }
-}
-@media (min-width:1300px) and (max-width:1600px){
-    .logo{
-        position: relative;
-        top: -30px;
-        left: -160px;
-    }
-}
 @media (min-width:340px) and (max-width:962px){
     .section__container{
         position: relative;
         bottom: -55px;
     }
     
+}
+
+@media (max-width: 1300px) {
+    nav{
+        position: absolute;
+        top: 0;
+        left: 50%;
+    } 
+}
+
+@media (max-width: 1200px) {
+    nav{
+        position: absolute;
+        top: 0;
+        left: 48%;
+    } 
 }
 
     </style>
