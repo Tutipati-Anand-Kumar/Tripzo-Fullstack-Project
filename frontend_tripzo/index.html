@@ -599,17 +599,17 @@
     }
     .display__card {
         gap: 0.5rem;
+        }
+        .display__card i {
+            font-size: 2.2rem;
+        }
+        .display__card h4 {
+            font-size: 1.1rem;
+        }
+        .display__card p {
+            font-size: 0.8rem;
+        }
     }
-    .display__card i {
-        font-size: 2.2rem;
-    }
-    .display__card h4 {
-        font-size: 1.1rem;
-    }
-    .display__card p {
-        font-size: 0.8rem;
-    }
-}
 
 @media (min-width: 1024px) {
     /* Navigation */
@@ -824,6 +824,15 @@
         .myraIcon.hidden {
             display: none !important;
             pointer-events: none; 
+        }
+
+        .myraBorder.disabled {
+            pointer-events: none;
+            opacity: 0.5;
+        }
+
+        .myraBorder.disabled .myraIcon {
+            cursor: not-allowed;
         }
 
         .myraBorder.chat-open {
@@ -1686,7 +1695,7 @@
         </div>
     </div>
 
-    <div class="myraBorder">
+    <div class="myraBorder" id="myraBorder">
         <span class="myraIcon" onclick="toggleChat()"></span>
         <div class="hover-tooltip">Ask me anything</div>
     </div>
@@ -1696,7 +1705,7 @@
             <div class="chat-header-content">
                 <div class="chat-avatar">🤖</div>
                 <div class="chat-user-info">
-                    <h3 id="userName">Hi, Anand</h3>
+                    <h3 id="userName">Hi, there</h3>
                     <p>I'm Myra — your personal travel assistant.<br>Let's plan your next trip together.</p>
                 </div>
             </div>
@@ -1818,7 +1827,16 @@
             }
         }
         
-            window.toggleChat = function() {
+        window.toggleChat = async function() {
+            const token = localStorage.getItem('token');
+            if (!token) {
+                showCustomModal('Please log in to access the chat assistant.');
+                setTimeout(() => {
+                    window.location.href = 'loginform.html';
+                }, 2000);
+                return;
+            }
+
             const chatContainer = document.getElementById('chatContainer');
             const myraIcon = document.querySelector('.myraIcon');
             const myraBorder = document.querySelector('.myraBorder');
@@ -1862,6 +1880,7 @@
         window.handleLogout = function() {
             localStorage.removeItem('token');
             updateAuthUI();
+            initializeChat(); // Re-initialize chat after logout
             showCustomModal("You have been logged out successfully!");
             setTimeout(() => {
                 window.location.href = 'index.html'; 
@@ -1887,6 +1906,51 @@
                         <a href="registration_form.html"><button class="register-btn">Register</button></a>
                     </li>
                 `;
+            }
+        }
+
+        // New function to fetch user data and set short name
+        async function fetchUserData() {
+            const token = localStorage.getItem('token');
+            if (!token) return;
+
+            try {
+                const response = await fetch('/api/auth/me', {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
+
+                if (response.ok) {
+                    const user = await response.json();
+                    const fullName = user.name || 'User';
+                    // Extract short name: take the first word (e.g., "TUTIPATI ANAND KUMAR" -> "TUTIPATI", "phinihas gandi" -> "phinihas")
+                    // If you want the last word (e.g., "Anand"), change to fullName.split(' ').pop().trim()
+                    const shortName = fullName.split(' ')[0].trim();
+                    document.getElementById('userName').textContent = `Hi, ${shortName}`;
+                } else {
+                    console.error('Failed to fetch user data');
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+            }
+        }
+
+        // Initialize chat based on login status
+        function initializeChat() {
+            const token = localStorage.getItem('token');
+            const myraBorder = document.getElementById('myraBorder');
+            const userName = document.getElementById('userName');
+
+            if (token) {
+                myraBorder.classList.remove('disabled');
+                userName.textContent = 'Hi, there'; // Placeholder until fetched
+                fetchUserData(); // Fetch and set real name
+            } else {
+                myraBorder.classList.add('disabled');
+                userName.textContent = 'Guest'; // Or hide chat entirely if preferred
             }
         }
 
@@ -1917,6 +1981,7 @@
         document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('book-now-btn').addEventListener('click', handleBookNow);
             updateAuthUI();
+            initializeChat(); // Initialize chat on load
            // Add hamburger menu event listener
             const hamburgerMenu = document.getElementById('hamburger-menu');
             if (hamburgerMenu) {
