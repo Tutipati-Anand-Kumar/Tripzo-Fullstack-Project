@@ -72,6 +72,7 @@ body {
   max-width: 1200px;
   position: relative;
   overflow: hidden;
+  width: 100%;
 }
 
 .heading-section::before {
@@ -118,7 +119,7 @@ body {
 
 .heading-section .emoji {
   display: inline-block;
-  font-size: 1em;
+  font-size: 1.1em;
   margin: 0 10px;
   animation: rotate-pulse 3s ease-in-out infinite;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
@@ -206,7 +207,7 @@ body {
   position: absolute;
   left: 12px;  
   top: 50%;
-  transform: translateY(-50%);
+  transform: transform: translateY(-50%);
   color: #666;
   cursor: pointer;
 }
@@ -272,6 +273,8 @@ body {
   gap: 20px;
   justify-items: center;
   justify-content: center;
+  margin: 0 auto;
+  width: 100%;
 }
 .card {
   background: #fff;
@@ -350,6 +353,51 @@ body {
 }
 
 /* Responsive Styles */
+@media (min-width: 769px) and (max-width: 1150px) {
+  .filter-bar {
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .search-container {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  .filter-bar select,
+  .filter-bar input[type="number"],
+  .filter-btn {
+    min-width: 100px;
+    flex: 1 1 calc(33% - 10px);
+  }
+}
+
+@media (min-width: 340px) and (max-width: 768px) {
+  .heading-section {
+    width: 100%;
+    max-width: none;
+  }
+  .filter-bar {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 10px;
+  }
+  .search-container,
+  .filter-bar select,
+  .filter-bar input[type="number"],
+  .filter-btn {
+    width: 100%;
+    flex: none;
+    min-width: auto;
+    max-width: none;
+  }
+  .container {
+    padding: 0 10px;
+  }
+  .cards {
+    justify-content: center;
+    padding: 0 10px;
+  }
+}
+
 @media (max-width: 1024px) {
   .heading-section {
     margin: 70px 15px 10px;
@@ -397,22 +445,6 @@ body {
 
   .heading-section p {
     font-size: 0.9rem;
-  }
-
-  .filter-bar {
-    flex-direction: column;
-    align-items: stretch;
-    gap: 10px;
-  }
-
-  .search-container,
-  .filter-bar select,
-  .filter-bar input[type="number"],
-  .filter-btn {
-    width: 100%;
-    flex: none;
-    min-width: auto;
-    max-width: none;
   }
 
   .cards {
@@ -515,8 +547,6 @@ body {
 </div>
 
 <script>
-const API_URL='';
-
 document.addEventListener('DOMContentLoaded',()=>{
   const cardsContainer=document.getElementById('cards-container');
   const continentFilter=document.getElementById('continent-filter');
@@ -538,7 +568,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   const fetchTrips=async()=>{
     try{
-      const response=await fetch(`${API_URL}/api/trips`);
+      const response=await fetch('/api/trips');
       const trips=await response.json();
       if(response.ok){
         allTrips=trips;
