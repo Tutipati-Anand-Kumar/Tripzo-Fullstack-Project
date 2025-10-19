@@ -1,15 +1,13 @@
 {
   "version": 2,
   "builds": [
-  
-    {
-      "src": "frontend_tripzo/index.html", 
-      "use": "@vercel/static"            
-    },
-
     {
       "src": "backend_tripzo/server.js",
       "use": "@vercel/node"
+    },
+    {
+      "src": "frontend_tripzo/**", 
+      "use": "@vercel/static"
     }
   ],
   "routes": [
@@ -18,7 +16,15 @@
       "dest": "backend_tripzo/server.js"
     },
     {
-      "src": "/(.*)",
+      "src": "/(.*\\.(?:js|css|ico|svg|png|jpg|jpeg|gif|avif|webp|html))",
+      "dest": "frontend_tripzo/$1"
+    },
+    {
+      "src": "/",
+      "dest": "frontend_tripzo/index.html"
+    },
+    {
+      "src": "/([^/]+\\.html)$",
       "dest": "frontend_tripzo/$1"
     }
   ]
