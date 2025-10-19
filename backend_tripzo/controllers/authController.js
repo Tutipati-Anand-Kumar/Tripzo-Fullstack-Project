@@ -111,7 +111,7 @@ exports.login = async (req, res) => {
 
         const user = await User.findOne({ email });
         if (!user) {
-            return res.status(400).json({ msg: "Invalid credentials" });
+            return res.status(400).json({ msg: "You have to register first." }); 
         }
 
         if (!user.isVerified) {
@@ -145,4 +145,29 @@ exports.getMe = async (req, res) => {
     console.error("Error in getMe:", err);
     res.status(500).json({ msg: "Server Error", error: err.message });
   }
+};
+
+exports.forgotPassword = async (req, res) => {
+    try {
+        const { email, newPassword } = req.body;
+
+        if (!newPassword || newPassword.length < 6) {
+            return res.status(400).json({ msg: "New password must be at least 6 characters." });
+        }
+
+        const user = await User.findOne({ email });
+        if (!user) {
+            return res.status(400).json({ msg: "Email is not matching, give the correct email to change the password." });
+        }
+
+        const hashedPassword = await bcrypt.hash(newPassword, 10);
+
+        user.password = hashedPassword;
+        await user.save();
+
+        res.json({ msg: "Password reset successful!" });
+    } catch (err) {
+        console.error("Error in forgotPassword:", err);
+        res.status(500).json({ msg: "Server Error", error: err.message });
+    }
 };
