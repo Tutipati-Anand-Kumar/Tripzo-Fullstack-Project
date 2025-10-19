@@ -1878,15 +1878,14 @@
         }
 
         window.handleLogout = function() {
-            localStorage.removeItem('token');
+            localStorage.removeItem('token'); 
             updateAuthUI();
-            initializeChat(); // Re-initialize chat after logout
+            initializeChat(); 
             showCustomModal("You have been logged out successfully!");
             setTimeout(() => {
                 window.location.href = 'index.html'; 
             }, 2000);
         }
-
        window.updateAuthUI = function() {
             const authContainer = document.getElementById('auth-buttons-container');
             authContainer.innerHTML = '';
