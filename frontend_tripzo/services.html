@@ -54,7 +54,7 @@ body {
   z-index: 1000;
   box-shadow: 0 2px 6px rgba(0,0,0,0.2);
   font-size: 16px;
-  transition: transform .2s ease-ease-in-out, background-color .3s;
+  transition: transform .2s ease-in-out, background-color .3s;
 }
 .home-button:hover {
   transform: scale(1.05);
@@ -63,8 +63,8 @@ body {
 
 .heading-section {
   text-align: center;
-  margin: 60px auto 20px; 
-  padding: 30px 20px;
+  margin: 80px auto 15px; 
+  padding: 20px 15px;
   background: linear-gradient(135deg, rgba(255,255,255,0.95), rgba(255,255,255,0.85));
   border-radius: 20px;
   backdrop-filter: blur(10px);
@@ -92,15 +92,15 @@ body {
 
 .heading-section h1 {
   font-family: 'Playfair Display', serif;
-  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-size: clamp(1.4rem, 3vw, 2.2rem);
   font-weight: 700;
   background: linear-gradient(45deg, #667eea, #764ba2, #f093fb, #f5576c);
   background-size: 300% 300%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin: 0 0 10px 0;
-  line-height: 1.3;
+  margin: 0 0 5px 0;
+  line-height: 1.2;
   animation: gradient-flow 4s ease-in-out infinite, gentle-bounce 6s ease-in-out infinite;
   position: relative;
   letter-spacing: -0.5px;
@@ -118,8 +118,8 @@ body {
 
 .heading-section .emoji {
   display: inline-block;
-  font-size: 1.1em;
-  margin: 0 15px;
+  font-size: 1em;
+  margin: 0 10px;
   animation: rotate-pulse 3s ease-in-out infinite;
   filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
@@ -132,7 +132,7 @@ body {
 
 .heading-section p {
   font-family: 'Poppins', sans-serif;
-  font-size: clamp(0.9rem, 2.5vw, 1.1rem);
+  font-size: clamp(0.8rem, 2vw, 1rem);
   font-weight: 400;
   color: #555;
   margin: 0;
@@ -180,17 +180,17 @@ body {
 .filter-bar {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
-  gap: 15px;
-  margin: 20px 0;
+  gap: 10px;
+  margin: 15px 0;
 }
 
 .search-container {
   position: relative;
-  flex: 1;
-  min-width: 250px;
-  max-width: 350px;
+  flex: 2;
+  min-width: 200px;
+  max-width: 400px;
 }
 
 .search-container input {
@@ -212,7 +212,9 @@ body {
 }
 
 .filter-bar select {
-  flex: 0 0 200px;
+  flex: 1;
+  min-width: 120px;
+  max-width: 180px;
   padding: 12px;
   font-size: 15px;
   border-radius: 8px;
@@ -227,7 +229,9 @@ body {
 }
 
 .filter-bar input[type="number"] {
-  flex: 0 0 150px;
+  flex: 1;
+  min-width: 120px;
+  max-width: 150px;
   padding: 12px;
   font-size: 15px;
   border-radius: 8px;
@@ -236,13 +240,14 @@ body {
 }
 
 .filter-btn {
-  flex: 0 0 auto;
-  min-width: 160px;
+  flex: 1;
+  min-width: 120px;
+  max-width: 180px;
   text-align: center;
   background-color: #6a0dad;
   color: #fff;
   border: none;
-  padding: 12px 20px;
+  padding: 12px;
   font-size: 15px;
   font-weight: bold;
   border-radius: 8px;
@@ -265,6 +270,7 @@ body {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
   gap: 20px;
+  justify-items: center;
   justify-content: center;
 }
 .card {
@@ -275,8 +281,8 @@ body {
   display: flex;
   flex-direction: column;
   position: relative;
-  max-width: 400px;
-  margin: auto;
+  width: 100%;
+  max-width: 350px;
   opacity: 0; 
   transform: translateY(20px); 
   transition: opacity 0.6s ease-out, transform 0.6s ease-out; 
@@ -346,8 +352,8 @@ body {
 /* Responsive Styles */
 @media (max-width: 1024px) {
   .heading-section {
-    margin: 50px 15px 15px;
-    padding: 25px 15px;
+    margin: 70px 15px 10px;
+    padding: 18px 15px;
   }
 
   .container {
@@ -355,11 +361,12 @@ body {
   }
 
   .filter-bar {
-    gap: 10px;
+    gap: 8px;
+    justify-content: center;
   }
 
   .search-container {
-    min-width: 200px;
+    min-width: 180px;
     max-width: 100%;
   }
 
@@ -380,22 +387,22 @@ body {
   }
 
   .heading-section {
-    margin: 40px 10px 10px;
-    padding: 20px 15px;
+    margin: 60px 10px 8px;
+    padding: 15px 12px;
   }
 
   .heading-section h1 {
-    font-size: 1.8rem;
+    font-size: 1.6rem;
   }
 
   .heading-section p {
-    font-size: 0.95rem;
+    font-size: 0.9rem;
   }
 
   .filter-bar {
     flex-direction: column;
     align-items: stretch;
-    gap: 12px;
+    gap: 10px;
   }
 
   .search-container,
@@ -404,9 +411,6 @@ body {
   .filter-btn {
     width: 100%;
     flex: none;
-  }
-
-  .search-container {
     min-width: auto;
     max-width: none;
   }
@@ -414,6 +418,10 @@ body {
   .cards {
     grid-template-columns: 1fr;
     gap: 15px;
+  }
+
+  .card {
+    max-width: 100%;
   }
 
   .card img {
@@ -432,16 +440,16 @@ body {
 
 @media (max-width: 480px) {
   .heading-section {
-    margin: 30px 5px 5px;
-    padding: 15px 10px;
+    margin: 50px 5px 5px;
+    padding: 12px 10px;
   }
 
   .heading-section h1 {
-    font-size: 1.5rem;
+    font-size: 1.4rem;
   }
 
   .heading-section p {
-    font-size: 0.85rem;
+    font-size: 0.8rem;
   }
 
   .container {
@@ -449,7 +457,7 @@ body {
   }
 
   .filter-bar {
-    gap: 10px;
+    gap: 8px;
   }
 
   .cards {
