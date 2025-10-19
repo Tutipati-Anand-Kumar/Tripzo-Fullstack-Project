@@ -1,13 +1,12 @@
 {
   "version": 2,
   "builds": [
+  
     {
-      "src": "frontend_tripzo/**",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "frontend_tripzo"
-      }
+      "src": "frontend_tripzo/index.html", 
+      "use": "@vercel/static"            
     },
+
     {
       "src": "backend_tripzo/server.js",
       "use": "@vercel/node"
