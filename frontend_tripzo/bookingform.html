@@ -64,10 +64,27 @@
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
         }
-
+        
+        /* Media query for overall layout change to single column */
         @media (max-width: 900px) {
+            .booking-container {
+                padding: 20px; /* Reduced padding for smaller screens */
+            }
             .form-grid {
+                grid-template-columns: 1fr; /* Single column layout for form fields */
+            }
+        }
+
+        /* NEW: Specific media query for the requested vertical input stack and font-size reduction (335px to 700px) */
+        @media (min-width: 335px) and (max-width: 700px) {
+             .form-grid {
+                /* Ensured single column layout in this range */
                 grid-template-columns: 1fr;
+                gap: 15px; /* Slightly reduced gap */
+            }
+            .booking-form-section h1 {
+                font-size: 1.8rem; /* Reduced font size for heading */
+                margin-bottom: 20px;
             }
         }
         
@@ -83,15 +100,18 @@
             margin-bottom: 15px;
         }
         
+        /* Default 2-column layout column placement */
         .form-group:nth-of-type(odd) {
             grid-column: 1;
         }
         .form-group:nth-of-type(even) {
             grid-column: 2;
         }
+        
+        /* Ensures single column when form-grid is 1fr, covering both existing and new media queries */
         @media (max-width: 900px) {
             .form-group {
-                grid-column: span 2;
+                grid-column: span 1 !important; /* Forces all to span 1 column, making them vertical */
             }
         }
 
