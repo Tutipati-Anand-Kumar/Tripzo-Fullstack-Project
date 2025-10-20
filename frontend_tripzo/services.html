@@ -570,6 +570,8 @@ document.addEventListener('DOMContentLoaded',()=>{
   const searchBar=document.getElementById('search-bar');
   const offerToggleBtn=document.getElementById('offer-toggle-btn');
   const loaderContainer = document.getElementById('loader-container');
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const BASE_URL = isLocal ? 'http://localhost:3000' : '';
 
   let allTrips=[];
   let offerFilterState = 'all'; 
@@ -584,7 +586,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
   const fetchTrips=async()=>{
     try{
-      const response=await fetch('/api/trips');
+      const response=await fetch(`${BASE_URL}/api/trips`);
       const trips=await response.json();
       if(response.ok){
         allTrips=trips;

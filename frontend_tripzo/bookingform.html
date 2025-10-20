@@ -319,7 +319,8 @@
     </div>
     
     <script>
-        const API_URL = '';
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const BASE_URL = isLocal ? 'http://localhost:3000' : '';
 
         function showAlert(message) {
             const alertBox = document.createElement('div');
@@ -356,7 +357,7 @@
 
             const fetchTripDetails = async () => {
                 try {
-                    const response = await fetch(`${API_URL}/api/trips/${encodeURIComponent(destination)}`);
+                    const response = await fetch(`${BASE_URL}/api/trips/${encodeURIComponent(destination)}`);
                     const result = await response.json();
                     
                     if (!response.ok) {
@@ -423,7 +424,7 @@
                 };
 
                 try {
-                    const response = await fetch(`${API_URL}/api/bookings/calculate-price`, {
+                    const response = await fetch(`${BASE_URL}/api/bookings/calculate-price`, {
                         method: 'POST',
                         headers: { 'Content-Type': 'application/json' },
                         body: JSON.stringify(payload)
@@ -481,7 +482,7 @@
                     };
 
                     try {
-                        const priceResponse = await fetch(`${API_URL}/api/bookings/calculate-price`, {
+                        const priceResponse = await fetch(`${BASE_URL}/api/bookings/calculate-price`, {
                             method: 'POST',
                             headers: { 'Content-Type': 'application/json' },
                             body: JSON.stringify(payload)

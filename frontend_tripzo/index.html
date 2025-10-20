@@ -1740,6 +1740,8 @@
         const API_KEY = "AIzaSyBhx6CjYTsh-Rmnad1EgQ6NF09gsNzNMdk"; 
         const ai = new GoogleGenerativeAI(API_KEY);
         const model = ai.getGenerativeModel({ model: "gemini-2.5-flash" });
+        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        const BASE_URL = isLocal ? 'http://localhost:3000' : '';
 
         const promptInput = document.getElementById('chatInput');
         const sendButton = document.querySelector('.send-btn');
@@ -1799,7 +1801,7 @@
                 }
             } else {
                 try {
-                    const response = await fetch("/api/chat", {
+                    const response = await fetch(`${BASE_URL}/api/chat`, {
                         method: "POST",
                         headers: { "Content-Type": "application/json" },
                         body: JSON.stringify({ intent, data })
@@ -1915,7 +1917,7 @@
             if (!token) return;
 
             try {
-                const response = await fetch('/api/auth/me', {
+                const response = await fetch(`${BASE_URL}/api/auth/me`, {
                     method: 'GET',
                     headers: {
                         'Authorization': `Bearer ${token}`,

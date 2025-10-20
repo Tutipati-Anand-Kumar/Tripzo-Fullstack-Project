@@ -114,6 +114,8 @@
         document.addEventListener('DOMContentLoaded', () => {
             const params = new URLSearchParams(window.location.search);
             const bookingData = JSON.parse(decodeURIComponent(params.get('data')));
+            const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+            const BASE_URL = isLocal ? 'http://localhost:3000' : '';
             
             if (bookingData && bookingData.price && bookingData.price.totalPrice) {
                 document.getElementById('payment-amount').textContent = `₹${bookingData.price.totalPrice.toFixed(2)}`;
@@ -139,7 +141,7 @@
                 }
 
                 try {
-                    const response = await fetch('/api/bookings', {
+                    const response = await fetch(`${BASE_URL}/api/bookings`, {
                         method: 'POST',
                         headers: {
                             'Content-Type': 'application/json',
