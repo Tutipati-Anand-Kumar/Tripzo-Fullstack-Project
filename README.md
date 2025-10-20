@@ -159,3 +159,119 @@ Bash
 # Example updated .env file entry
 EMAIL_PASS="abcd efgh ijkl mnop" # Replace with your generated password, spaces are optional
 After updating the .env file, you may need to stop and restart your backend server (npm start) to load the new credentials. Once complete, the user authentication and email OTP verification features will work correctly!
+
+# 🚀 **Tripzo Fullstack Project – Vercel Deployment Guide**
+
+This guide explains how to deploy the **Tripzo Fullstack Travel Application** (frontend + backend) on **Vercel**.  
+It uses a **`vercel.json`** configuration file to automatically handle the frontend as a **static site** and the backend (`server.js`) as a **Serverless Function**.
+
+---
+
+## 🧭 **Step 1: Start Project Import in Vercel**
+
+1. **Login to Vercel** → Click **“Add New...” → “Project”**
+2. **Import Your Repository**  
+   Select your GitHub repository:  
+   👉 `Tutupatipati-Anand-Kumar/Tripzo-Fullstack-Project`
+3. On the **New Project** screen:
+   - **Team/Project Name:** `tripzo-fullstack-project`
+   - **Framework Preset:** `Other`
+   - **Root Directory:** `.` (dot – represents the root of your repository)
+
+> ⚠️ **Important:** The root directory must be set to “.” — not a subfolder.
+
+---
+
+## ⚙️ **Step 2: Configure Build & Output Settings**
+
+Vercel automatically detects your project structure from **`vercel.json`**, so minimal manual setup is needed.
+
+| **Setting** | **Value** | **Notes** |
+|--------------|------------|------------|
+| **Build Command** | Leave Empty / Default | Vercel infers build steps using `vercel.json`. |
+| **Output Directory** | Leave Empty / Default | Controlled by `vercel.json` for both frontend and backend. |
+
+---
+
+## 🔐 **Step 3: Add Environment Variables (Most Critical Step)**
+
+Your backend requires secret keys from your local `.env` file.  
+Add these manually in Vercel:
+
+1. Expand **Environment Variables** in Vercel project settings.  
+2. Add each variable (for **Production**, **Preview**, and optionally **Development**) one by one.  
+
+| 🧩 **Variable Name** | 🔑 **Value (from your local .env)** | 📝 **Description** |
+|----------------------|--------------------------------------|--------------------|
+| `MONGODB_URI` | `<YOUR_MONGO_DB_CONNECTION_STRING>` | MongoDB Atlas connection string |
+| `JWT_SECRET` | `<YOUR_LONG_AND_COMPLEX_SECRET_KEY>` | Secret for signing JSON Web Tokens |
+| `GEMINI_API_KEY` | `<YOUR_GOOGLE_GEMINI_API_KEY>` | Google Gemini API key for AI Assistant |
+| `OPENWEATHER_API_KEY` | `<YOUR_OPENWEATHERMAP_API_KEY>` | API key for fetching weather data |
+| `MAPQUEST_API_KEY` | `<YOUR_MAPQUEST_API_KEY>` | API key for route and distance calculations |
+| `EMAIL_USER` | `<YOUR_GMAIL_ADDRESS>` | Email used to send OTPs |
+| `EMAIL_PASS` | `<YOUR_GMAIL_APP_PASSWORD>` | 16-character App Password (not your Gmail password) |
+
+> 💡 **Tip:** You don’t need a `PORT` variable — Vercel assigns it automatically.
+
+---
+
+## 🚀 **Step 4: Final Deploy and Verification**
+
+1. After setting the environment variables, click **Deploy**.
+2. Vercel will:
+   - Build the **frontend** (`frontend_tripzo`) as a **static site**
+   - Deploy **backend** (`backend_tripzo/server.js`) as a **Serverless Function**
+3. Wait for deployment (a few minutes).
+
+When deployment finishes successfully:
+- ✅ You’ll get a live domain like:  
+  **https://tripzo-fullstack-project.vercel.app/**
+- ✅ Open it and test:
+  - Navigate across pages.
+  - Try user **registration**, **login**, or **AI Travel Assistant (Myra)**.
+  - Ensure APIs connect correctly between frontend and backend.
+
+---
+
+## 🎯 **Verification Checklist**
+
+✅ Frontend loads properly (Home, Explore, Myra AI Assistant, etc.)  
+✅ Backend API calls work (e.g., registration, weather data, trip planning)  
+✅ MongoDB data is stored and fetched correctly  
+✅ All environment variables are active in production  
+
+---
+
+## 🌍 **Deployment Summary**
+
+| **Component** | **Location / Type** | **Deployment Mode** |
+|----------------|--------------------|----------------------|
+| **Frontend (React/Static)** | `/frontend_tripzo` | Static Build |
+| **Backend (Express.js)** | `/backend_tripzo/server.js` | Serverless Function |
+| **Configuration** | `/vercel.json` | Manages routing & deployment behavior |
+
+---
+
+### 🧠 **Pro Tip:**
+
+If your deployment fails:
+- Check **Vercel Logs** under the “Functions” tab.
+- Verify that your **Environment Variables** are correctly added.
+- Ensure your **MongoDB URI** and **API keys** are valid.
+
+---
+
+### 💬 **Author**
+
+**👨‍💻 Anand Kumar**  
+Full Stack Developer | Travel Tech Enthusiast 🌏  
+[GitHub Profile](https://github.com/Tutupatipati-Anand-Kumar)
+
+---
+
+### 🏁 **Live Demo (After Deployment)**  
+👉 [https://tripzo-fullstack-project.vercel.app/](https://tripzo-fullstack-project.vercel.app/)
+
+---
+
+> 🧡 *“Code. Deploy. Explore the world with Tripzo.”*
