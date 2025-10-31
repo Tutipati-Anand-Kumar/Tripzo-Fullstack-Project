@@ -2,7 +2,7 @@
 /backend_tripzo/node_modules
 
 # Environment variables (SENSITIVE DATA)
-/backend_tripzo/.env
+# /backend_tripzo/.env
 
 # Logs and other temporary files
 npm-debug.log*
