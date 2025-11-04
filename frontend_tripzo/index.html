@@ -4,1110 +4,809 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-        href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css"
-        rel="stylesheet"
-    />
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.0.0/fonts/remixicon.css" rel="stylesheet" />
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <title>TRIPZO</title>
     <style>
         @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,400;0,500;0,700;1,500&display=swap");
 
-        :root {
-        --primary-color: #1c83d6;
-        --primary-color-dark: #b8cfe6;
-        --secondary-color: #e8f1fa;
-        --text-dark: #282d31;
-        --text-light: #767268;
-        --extra-light: #f3f4f6;
-        --max-width: 1200px;
-        }
-         * {
-        padding: 0;
-        margin: 0;
-        box-sizing: border-box;
-        }
-        ::-webkit-scrollbar{
-        display: none;
-        }
+:root {
+    --primary-color: #1c83d6;
+    --primary-color-dark: #b8cfe6;
+    --secondary-color: #e8f1fa;
+    --text-dark: #282d31;
+    --text-light: #767268;
+    --extra-light: #f3f4f6;
+    --max-width: 1200px;
+}
 
-        a{
-        color: whitesmoke;
-        text-decoration: none;
-        
-        }
-        .section__container {
-        padding: 3rem 0.5rem;
-        max-width: 1500px;
-        margin: auto;
-        }
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-        .section__title {
-        font-size: 2rem;
-        font-weight: 500;
-        color: var(--primary-color);
-        margin-bottom: 1rem;
-        text-align: center;
-        }
+::-webkit-scrollbar {
+    display: none;
+}
 
-        .section__subtitle {
-        font-size: 1rem;
-        font-style: italic;
-        color: var(--primary-color);
-        margin-bottom: 5rem;
-        text-align: center;
-        }
+html {
+    scroll-behavior: smooth;
+}
 
-        img {
-        width: 100%;
-        }
-        .photo{
-        width: 100%;
-        height: 280px;
-        }
+body {
+    font-family: "Roboto", sans-serif;
+    background-color: white;
+    color: black;
+    /* padding-top: 5px; */
+    min-height: 100vh;
+}
 
-        body {
-        font-family: "Roboto", sans-serif;
-        }
+a {
+    color: whitesmoke;
+    text-decoration: none;
+    font-size: x-large;
+}
 
-        nav {
-        position: absolute;
-        top: 0;
-        left: 58%;
-        transform: translateX(-50%);
-        padding: 2rem 1rem;
-        width: 100%;
-        max-width: var(--max-width);
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        }
+img {
+    width: 100%;
+    display: block;
+}
 
-        .nav__logo a {
-        text-decoration: none;
-        color: var(--extra-light);
-        font-size: 300.5rem;
-        }
+.photo {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+}
 
-        .nav__links {
-        position: absolute;
-        top: 45px;
-        right: 0;
-        display: none;
-        list-style: none;
-        align-items: center;
-        gap: 2rem;
-        
-        }
+li {
+    list-style-type: none;
+}
 
-        .link {
-        color: var(--extra-light);
-        text-transform: uppercase;
-        cursor: pointer;
-        transition: 0.3s;
-        }
+.section__container {
+    padding: 1rem 1rem;
+    max-width: 1500px;
+    margin: 0 auto;
+}
 
-        .link:hover {
-        color: var(--primary-color);
-        }
-        
-        li {
-            list-style-type: none;
-            }
+.section__title {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--primary-color);
+    margin-bottom: 1rem;
+    text-align: center;
+}
 
-        header {
-        height: 100vh;
-        background-image: linear-gradient(
-            rgba(45, 92, 132, 0.5),
-            rgba(45, 92, 132, 0.5)
-            ),
-            url("images/travel\ main\ logo.jpg");
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        }
+.section__subtitle {
+    font-size: 1rem;
+    font-style: italic;
+    color: var(--primary-color);
+    margin-bottom: 3rem;
+    text-align: center;
+}
 
-        header .section__container {
-        height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        }
+nav {
+    position: fixed;
+    height: 80px;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1.5rem 2rem;
+    background: transparent;
+    backdrop-filter: blur(10px);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
 
-        .header__content {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        margin-left: 7%;
-        gap: 2rem;
-        color: var(--extra-light);
-        }
+.nav__logo a {
+    text-decoration: none;
+    color: var(--extra-light);
+    font-size: 1.5rem;
+}
 
-        .header__content h1 {
-        font-size: 5rem;
-        font-weight: 400;
-        line-height: 5rem;
-        }
+.logo {
+    max-width: 180px;
+    width: 100%;
+    height: auto;
+}
 
-        .header__content p {
-        text-align: center;
-        }
+.logo img {
+    width: 100%;
+    height: auto;
+}
 
-        .header__content button {
-        padding: 1rem 2rem;
-        outline: none;
-        border: none;
-        border-radius: 5px;
-        background-color: var(--primary-color);
-        color: var(--extra-light);
-        font-size: 1rem;
-        cursor: pointer;
-        transition: 0.3s;
-        }
-        .logo {
-        max-width: 240px; 
-        width: 20%; 
-        min-width: 100px; 
-        height: auto; 
-        position: relative;
-        left: -280px;
-        top: -40px;
-        margin-left: 0; 
-        margin-right: auto;
-        }
+.nav__links {
+    display: flex;
+    list-style: none;
+    align-items: center;
+    gap: 2rem;
+}
 
-        .header__content button:hover {
-        background-color: var(--primary-color-dark);
-        }
+.link {
+    color: var(--extra-light);
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: 0.3s;
+    font-size: 0.95rem;
+}
 
-        .journey__container {
-        background-color: var(--secondary-color);
-        }
+.link:hover {
+    color: var(--primary-color-dark);
+}
 
-        .journey__grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        }
+header {
+    min-height: 100vh;
+    background-image: linear-gradient(rgba(45, 92, 132, 0.5), rgba(45, 92, 132, 0.5)), url("images/travel\ main\ logo.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
 
-        .country__card {
-        background-color: var(--extra-light);
-        }
+.header__content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    color: var(--extra-light);
+    text-align: center;
+    padding: 2rem;
+}
 
-        .country__name {
-        padding: 1rem;
-        text-align: left;
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--text-light);
-        cursor: pointer;
-        }
+.header__content h1 {
+    font-size: 5rem;
+    font-weight: 400;
+    line-height: 1.2;
+}
 
-        .country__name i {
-        font-size: 1.2rem;
-        }
+.header__content p {
+    max-width: 600px;
+    line-height: 1.6;
+}
 
-        .country__name span {
-        font-style: italic;
-        }
+.header__content button {
+    padding: 1rem 2rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: var(--extra-light);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-        .banner__container {
-        background-image: linear-gradient(
-            rgba(35, 71, 103, 0.5),
-            rgba(35, 71, 103, 0.5)
-            ),
-            url("images/travel\ bg.jpg");
-        background-position: center center;
-        background-repeat: no-repeat;
-        background-size: cover;
-        margin: 0px 20px;
-        }
+.header__content button:hover {
+    background-color: var(--primary-color-dark);
+    transform: translateY(-2px);
+}
 
-        .banner__container .section__container {
-        padding: 10rem 0.5rem;
-        display: flex;
-        justify-content: center;
-        }
+.journey__container {
+    background-color: var(--secondary-color);
+}
 
-        .banner__content {
-        display: flex;
-        align-items: center;
-        flex-direction: column;
-        gap: 1.5rem;
-        text-align: center;
-        color: var(--extra-light);
-        }
+.journey__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
 
-        .banner__content h2 {
-        font-size: 2rem;
-        font-weight: 400;
-        }
+.country__card {
+    background-color: var(--extra-light);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
 
-        .banner__content button {
-        padding: 0.5rem 2rem;
-        outline: none;
-        border: 2px solid var(--secondary-color);
-        background-color: transparent;
-        color: var(--secondary-color);
-        font-size: 1rem;
-        cursor: pointer;
-        }
+.country__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
 
-        .display__container {
-        background-color: var(--secondary-color);
-        }
+.country__name {
+    padding: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-light);
+}
 
-        .display__container :is(.section__title, .section__subtitle) {
-        color: var(--text-dark);
-        }
+.country__name i {
+    font-size: 1.2rem;
+}
 
-        .display__grid {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 1rem;
-        }
+.country__name span {
+    font-style: italic;
+}
 
-        .display__card {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-direction: column;
-        gap: 0.5rem;
-        background-color: var(--extra-light);
-        text-align: center;
-        }
+.virtual-tour-container {
+    /* padding: 3rem 1rem; */
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
 
-        .display__card i {
-        font-size: 2rem;
-        color: var(--primary-color);
-        }
+.virtual-tour-container iframe {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
-        .display__card h4 {
-        font-size: 1rem;
-        font-weight: 500;
-        padding: 0 1rem;
-        color: var(--text-dark);
-        }
+.banner__container {
+    background-image: linear-gradient(rgba(35, 71, 103, 0.5), rgba(35, 71, 103, 0.5)), url("images/travel\ bg.jpg");
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    margin: 2rem 1rem;
+    border-radius: 10px;
+}
 
-        .display__card p {
-        font-size: 0.8rem;
-        padding: 0 1rem;
-        color: var(--text-dark);
-        }
+.banner__container .section__container {
+    padding: 8rem 2rem;
+    display: flex;
+    justify-content: center;
+}
 
-        .display__grid .grid-1 {
-        grid-area: 1/1/3/3;
-        }
+.banner__content {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+    color: var(--extra-light);
+    max-width: 800px;
+}
 
-        footer {
-        background-color: var(--text-dark);
-        color: var(--secondary-color);
-        }
+.banner__content h2 {
+    font-size: 2.5rem;
+    font-weight: 400;
+}
 
-        footer .section__container {
-        display: grid;
-        gap: 1.5rem;
-        text-align: center;
-        }
+.banner__content button {
+    padding: 0.75rem 2rem;
+    outline: none;
+    border: 2px solid var(--secondary-color);
+    background-color: transparent;
+    color: var(--secondary-color);
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-        footer h4 {
-        font-size: 1.5rem;
-        font-weight: 500;
-        }
+.banner__content button:hover {
+    background-color: var(--secondary-color);
+    color: var(--text-dark);
+}
 
-        .social__icons {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 1rem;
-        }
+.display__container {
+    background-color: var(--secondary-color);
+}
 
-        .social__icons i {
-        padding: 5px;
-        font-size: 1.2rem;
-        cursor: pointer;
-        }
+.display__container :is(.section__title, .section__subtitle) {
+    color: var(--text-dark);
+}
 
-        footer p {
-        font-style: italic;
-        }
+.display__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
 
-        @media (min-width:700px) and (max-width:1700px) {
-           .header__content #heading{
-                font-size: 2rem;
-                margin-left: -80px;
+.display__card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 0.5rem;
+    background-color: var(--extra-light);
+    text-align: center;
+    padding: 2rem 1rem;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
 
-            }
-            .header__content #matter{
-                margin-left: -80px;
-            }
-            #book-now-btn{
-                margin-left: -80px;
-            }
-        }
+.display__card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+}
 
-        @media (max-width: 639px) {
-    /* Navigation */
-    .nav__links {
-        display: none; 
-        position: fixed;
-        top: 70px;
-        right: 1rem;
-        background-color: rgba(28, 131, 214, 0.9); /* Semi-transparent primary color */
-        flex-direction: column;
-        padding: 1rem;
-        border-radius: 5px;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        z-index: 1000;
+.display__card i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+}
+
+.display__card h4 {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.display__card p {
+    font-size: 0.9rem;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.display__grid .grid-1 {
+    grid-column: span 2;
+}
+
+.display__grid .grid-1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+footer {
+    background-color: var(--text-dark);
+    color: var(--secondary-color);
+    /* padding: 3rem 1rem; */
+}
+
+footer .section__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    text-align: center;
+}
+
+footer h2 {
+    font-size: 2rem;
+    font-weight: 500;
+}
+
+.social__icons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+.social__icons i {
+    padding: 10px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.social__icons i:hover {
+    color: var(--primary-color);
+    transform: scale(1.2);
+}
+
+footer p {
+    font-style: italic;
+    line-height: 1.6;
+}
+
+#auth-buttons-container {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.login-btn, .logout-btn, .register-btn {
+  background: rgba(255, 255, 255, 0.15);   
+  color: #ffffff;                         
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.6rem 1.5rem;
+  border-radius: 25px;
+  cursor: pointer;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(8px);       
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); 
+}
+
+.login-btn:hover, .logout-btn:hover, .register-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.login-btn:active, .logout-btn:active, .register-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 1px 5px rgba(0, 0, 0, 0.1);
+}
+
+#sos-button {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #e60000;
+    color: white;
+    border: none;
+    border-radius: 50px;
+    padding: 15px 25px;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.3);
+    transition: transform 0.2s ease, background-color 0.2s ease;
+    z-index: 1000;
+    animation: pulse 1.5s infinite;
+}
+
+#sos-button:hover {
+    background-color: #cc0000;
+    transform: scale(1.15);
+}
+
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(230, 0, 0, 0.6);
     }
-    #hamburger-menu{
-        display: flex;
+    70% {
+        transform: scale(1.08);
+        box-shadow: 0 0 0 15px rgba(230, 0, 0, 0);
     }
-    .nav__links.active {
-        display: flex; /* Show when toggled */
-    }
-    .link, .nav__links a {
-        color: var(--extra-light);
-        font-size: 1.2rem;
-        margin: 0.5rem 0;
-        text-align: center;
-    }
-    nav {
-        padding: 1rem 0.5rem;
-    }
-
-    /* Header */
-    header {
-        height: 60vh; /* Reduced height for mobile */
-    }
-    .header__content h1 {
-        font-size: 2.5rem;
-        line-height: 2.5rem;
-    }
-    .header__content p {
-        font-size: 1rem;
-    }
-    .header__content button {
-        padding: 0.75rem 1.5rem;
-        font-size: 0.9rem;
-    }
-
-    /* Journey Grid */
-    .journey__grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
-    }
-    .photo {
-        height: 200px; /* Reduced height for mobile images */
-    }
-
-    /* Virtual Tour */
-    .virtual-tour-container iframe {
-        height: 300px; /* Reduced height for mobile */
-    }
-
-    /* Banner */
-    .banner__container .section__container {
-        padding: 5rem 1rem;
-    }
-    .banner__content h2 {
-        font-size: 1.5rem;
-    }
-    .banner__content p {
-        font-size: 0.9rem;
-    }
-    .banner__content button {
-        padding: 0.4rem 1.5rem;
-        font-size: 0.9rem;
-    }
-
-    /* Display Grid */
-    .display__grid {
-        grid-template-columns: 1fr; /* Single column on mobile */
-    }
-    .display__card {
-        gap: 0.3rem;
-    }
-    .display__card i {
-        font-size: 1.5rem;
-    }
-    .display__card h4 {
-        font-size: 0.9rem;
-    }
-    .display__card p {
-        font-size: 0.7rem;
-    }
-
-    /* Footer */
-    footer .section__container {
-        gap: 1rem;
-    }
-    footer h2 {
-        font-size: 1.2rem;
-    }
-    .social__icons {
-        gap: 0.5rem;
-    }
-    .social__icons i {
-        font-size: 1rem;
-    }
-    footer p {
-        font-size: 0.8rem;
-    }
-
-    /* SOS Button */
-    #sos-button {
-        padding: 10px 15px;
-        font-size: 16px;
-        bottom: 10px;
-        right: 5px;
-    }
-
-    /* Myra Chat */
-    .myraBorder {
-        top: 200px;
-        right: 10px;
-    }
-    .myraIcon {
-        width: 50px;
-        height: 50px;
-    }
-    .hover-tooltip {
-        right: 60px;
-        padding: 8px 15px;
-        font-size: 12px;
-    }
-    .chat-container {
-        width: 90%;
-        height: 400px;
-        right: 5%;
-        bottom: 60px;
-    }
-    .chat-messages {
-        height: 250px;
+    100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba(230, 0, 0, 0);
     }
 }
 
-       @media (min-width: 640px) and (max-width: 767px) {
-    /* Navigation */
-    .nav__links {
-        display: flex;
-        gap: 1.5rem;
-    }
+.custom-modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
 
-    /* Header */
-    header {
-        height: 80vh;
-    }
-    .header__content h1 {
-        font-size: 3.5rem;
-        line-height: 3.5rem;
-    }
-    .header__content p {
-        font-size: 1.1rem;
-    }
+.modal-content {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    color: var(--text-dark);
+    max-width: 400px;
+    margin: 1rem;
+}
 
-    /* Journey Grid */
-    .journey__grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-    .photo {
-        height: 250px;
-    }
+.modal-content p {
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+}
 
-    /* Virtual Tour */
-    .virtual-tour-container iframe {
-        height: 400px;
-    }
+.modal-content button {
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: var(--primary-color);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
 
-    /* Banner */
-    .banner__container .section__container {
-        padding: 7rem 1rem;
-    }
-    .banner__content h2 {
-        font-size: 1.8rem;
-    }
-    .banner__content p {
-        font-size: 1rem;
-    }
+.modal-content button:hover {
+    background-color: var(--primary-color-dark);
+}
 
-    /* Display Grid */
-    .display__grid {
-        grid-template-columns: repeat(2, 1fr);
+.myraBorder {
+    display: flex;
+    position: fixed;
+    right: 20px;
+    bottom: 100px;
+    align-items: center;
+    justify-content: center;
+    height: 68px;
+    width: 68px;
+    z-index: 999;
+}
+
+.myraIcon {
+    width: 60px;
+    height: 60px;
+    background-color: #f5f5f5;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    background-image: url("https://jsak.mmtcdn.com/pwa/platform-myra-ui/static/sub_icons/tp-new-animated-with-con.webp");
+    background-repeat: no-repeat;
+    background-size: contain;
+    transition: all 0.3s ease;
+}
+
+.myraIcon.hidden {
+    display: none !important;
+    pointer-events: none;
+}
+
+.myraBorder.disabled {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.myraBorder.disabled .myraIcon {
+    cursor: not-allowed;
+}
+
+.myraBorder.chat-open {
+    pointer-events: none;
+}
+
+.myraIcon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 30px rgba(0, 0, 0, 0.2);
+}
+
+.hover-tooltip {
+    position: absolute;
+    right: 75px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 20px;
+    border-radius: 25px;
+    white-space: nowrap;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.hover-tooltip::after {
+    content: '';
+    position: absolute;
+    left: 100%;
+    top: 50%;
+    transform: translateY(-50%);
+    border: 8px solid transparent;
+    border-left-color: #667eea;
+}
+
+.myraBorder:hover .hover-tooltip {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(-50%) translateX(-10px);
+}
+
+.myraBorder.chat-is-open .hover-tooltip,
+.myraBorder.chat-is-open:hover .hover-tooltip {
+    opacity: 0 !important;
+    visibility: hidden !important;
+}
+
+.chat-container {
+    position: fixed;
+    bottom: 180px;
+    right: 25px;
+    width: 380px;
+    height: 450px;
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: none;
+    transition: all 0.3s ease-in-out;
+    z-index: 998;
+}
+
+.chat-container.active, .chat-container.open {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.chat-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+}
+
+.chat-header-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.chat-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+}
+
+.chat-user-info h3 {
+    font-size: 16px;
+    margin-bottom: 2px;
+}
+
+.chat-user-info p {
+    font-size: 12px;
+    opacity: 0.8;
+}
+
+.close-chat {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 50%;
+    transition: background 0.3s;
+}
+
+.close-chat:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.chat-messages {
+    height: 320px;
+    padding: 20px;
+    overflow-y: auto;
+    background: #f8fafc;
+    display: flex;
+    flex-direction: column;
+}
+
+.welcome-message {
+    background: white;
+    padding: 15px;
+    border-radius: 15px;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome-message p {
+    font-size: 14px;
+}
+
+.welcome-message h4 {
+    color: #4f46e5;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.quick-options {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.quick-option {
+    background: #e0e7ff;
+    color: #4f46e5;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 20px;
+    font-size: 11px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.quick-option:hover {
+    background: #4f46e5;
+    color: white;
+}
+
+.chat-input-container {
+    padding: 15px 20px;
+    background: white;
+    border-top: 1px solid #e2e8f0;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+}
+
+.message {
+    max-width: 75%;
+    padding: 10px 14px;
+    border-radius: 12px;
+    margin: 6px 0;
+    font-size: 14px;
+    font-family: "Roboto", sans-serif;
+    line-height: 1.4;
+    word-wrap: break-word;
+    animation: slideInMessage 0.3s ease;
+}
+
+.message.bot {
+    background: #f1f1f1;
+    color: #000;
+    align-self: flex-start;
+}
+
+.message.user {
+    background: #007bff;
+    color: #fff;
+    align-self: flex-end;
+}
+
+#see-tours-btn{
+    border-radius: 10%;
+    padding: 6px 8px 6px 8px;
+}
+
+@keyframes slideInMessage {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
     }
-    .display__card {
-        gap: 0.4rem;
-    }
-    .display__card i {
-        font-size: 2rem;
-    }
-    .display__card h4 {
-        font-size: 1rem;
-    }
-    .display__card p {
-        font-size: 0.75rem;
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
-    /* Navigation */
-    .nav__links {
-        display: flex;
-        gap: 1.8rem;
-    }
-
-    /* Header */
-    header {
-        height: 90vh;
-    }
-    .header__content {
-        max-width: 500px;
-    }
-    .header__content h1 {
-        font-size: 4rem;
-        line-height: 4rem;
-    }
-
-    /* Journey Grid */
-    .journey__grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .photo {
-        height: 260px;
-    }
-
-    /* Virtual Tour */
-    .virtual-tour-container iframe {
-        height: 500px;
-    }
-
-    /* Banner */
-    .banner__container .section__container {
-        justify-content: flex-end;
-    }
-    .banner__content {
-        align-items: flex-end;
-        text-align: right;
-        max-width: 600px;
-    }
-    .banner__content h2 {
-        font-size: 2rem;
-    }
-
-    /* Display Grid */
-    .display__grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .display__card {
-        gap: 0.5rem;
-        }
-        .display__card i {
-            font-size: 2.2rem;
-        }
-        .display__card h4 {
-            font-size: 1.1rem;
-        }
-        .display__card p {
-            font-size: 0.8rem;
-        }
-    }
-
-@media (min-width: 1024px) {
-    /* Navigation */
-    .nav__links {
-        display: flex;
-        gap: 2rem;
-    }
-
-    /* Header */
-    header .section__container {
-        justify-content: flex-start;
-    }
-    .header__content {
-        max-width: 400px;
-        align-items: flex-start;
-    }
-    .header__content p {
-        text-align: left;
-    }
-
-    /* Journey Grid */
-    .journey__grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-    .photo {
-        height: 280px;
-    }
-
-    /* Virtual Tour */
-    .virtual-tour-container iframe {
-        height: 600px;
-    }
-
-    /* Banner */
-    .banner__container .section__container {
-        justify-content: flex-end;
-    }
-    .banner__content {
-        align-items: flex-end;
-        text-align: right;
-        max-width: 800px;
-    }
-
-    /* Display Grid */
-    .display__grid {
-        grid-template-columns: repeat(4, 1fr);
-    }
-    .display__card {
-        gap: 1rem;
-    }
-    .display__card i {
-        font-size: 3rem;
-    }
-    .display__card h4 {
-        font-size: 1.5rem;
-    }
-    .display__card p {
-        font-size: 1rem;
-    }
+.chat-input-wrapper {
+    display: flex;
+    align-items: center;
+    background: #f1f5f9;
+    border-radius: 25px;
+    padding: 8px 15px;
+    gap: 10px;
 }
-        body {
-        background-color: white;
-        color: black;
-        font-size: 25px;
-        }
 
-        .dark-mode {
-        background-color: black;
-        color: white;
-        }
-        
-        body {
-        font-family: Arial, sans-serif;
-        margin: 0;
-        padding:0px 0px;
-        background: #f9f9f9;
-        min-height: 100vh;
-        }
+.chat-input {
+    flex: 1;
+    border: none;
+    background: none;
+    outline: none;
+    font-size: 14px;
+    padding: 8px 0;
+}
 
-        #sos-button {
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background-color: #e60000;
-        color: white;
-        border: none;
-        border-radius: 50px;
-        padding: 15px 25px;
-        font-size: 20px;
-        font-weight: bold;
-        cursor: pointer;
-        box-shadow: 0px 4px 10px rgba(0,0,0,0.3);
-        transition: transform 0.2s ease, background-color 0.2s ease;
-        z-index: 1000;
-        animation: pulse 1.5s infinite;
-        }
+.send-btn {
+    background: #4f46e5;
+    border: none;
+    color: white;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s;
+}
 
-        #sos-button:hover {
-        background-color: #cc0000;
-        transform: scale(1.15);
-        }
+.send-btn:hover {
+    background: #3730a3;
+    transform: scale(1.1);
+}
 
-        @keyframes pulse {
-        0% {
-            transform: scale(1);
-            box-shadow: 0 0 0 0 rgba(230, 0, 0, 0.6);
-        }
-        70% {
-            transform: scale(1.08);
-            box-shadow: 0 0 0 15px rgba(230, 0, 0, 0);
-        }
-        100% {
-            transform: scale(1);
-            box-shadow: 0 0 0 0 rgba(230, 0, 0, 0);
-        }
-        }
-        .virtual-tour-container {
-        padding: 5px 3px;
-        background-color: #f0f0f0;
-        margin-top: 5px;
-        border-radius: 8px;
-        }
-
-        .virtual-tour-container iframe {
-        max-width: 100%;
-        border-radius: 8px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-
-        .custom-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(0, 0, 0, 0.5);
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        z-index: 2000;
-        }
-
-        .modal-content {
-        background-color: white;
-        padding: 25px;
-        border-radius: 8px;
-        text-align: center;
-        box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-        color: var(--text-dark);
-        }
-
-        .modal-content p {
-        font-size: 1.2rem;
-        margin-bottom: 15px;
-        }
-
-        .modal-content button {
-        padding: 10px 20px;
-        border: none;
-        border-radius: 5px;
-        background-color: var(--primary-color);
-        color: white;
-        cursor: pointer;
-        margin: 0 5px;
-        }
-
-        .modal-content button:hover {
-        background-color: var(--primary-color-dark);
-        }
-        #auth-buttons-container{
-        display: flex;
-        gap: 30px;
-        }
-
-        .login-btn, .logout-btn, .register-btn {
-        background-color: navy;
-        color: white;
-        font-size: medium;
-        border: none;
-        padding: 8px 16px;
-        border-radius: 25px;
-        cursor: pointer;
-        }
-
-        .myraBorder {
-            display: flex;
-            position: fixed;
-            right: 10px;
-            top: 300px;
-            align-items: center;
-            justify-content: center;
-            height: 68px;
-            width: 68px;
-            z-index: 1000;
-        }
-
-        .myraIcon {
-            width: 60px;
-            height: 60px;
-            display: flex;
-            background-color: #f5f5f5;
-            border-radius: 50%;
-            cursor: pointer;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.15);
-            background-image: url("https://jsak.mmtcdn.com/pwa/platform-myra-ui/static/sub_icons/tp-new-animated-with-con.webp");
-            background-repeat: no-repeat;
-            background-size: contain;
-            display: block;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        .myraIcon.hidden {
-            display: none !important;
-            pointer-events: none; 
-        }
-
-        .myraBorder.disabled {
-            pointer-events: none;
-            opacity: 0.5;
-        }
-
-        .myraBorder.disabled .myraIcon {
-            cursor: not-allowed;
-        }
-
-        .myraBorder.chat-open {
-            pointer-events: none; 
-        }
-        .myraIcon:hover {
-            transform: scale(1.1);
-            box-shadow: 0 6px 30px rgba(0,0,0,0.2);
-        }
-
-        .hover-tooltip {
-            position: absolute;
-            right: 75px;
-            top: 50%;
-            transform: translateY(-50%);
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 12px 20px;
-            border-radius: 25px;
-            white-space: nowrap;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-            font-size: 14px;
-            font-weight: 500;
-        }
-
-        .hover-tooltip::after {
-            content: '';
-            position: absolute;
-            left: 100%;
-            top: 50%;
-            transform: translateY(-50%);
-            border: 8px solid transparent;
-            border-left-color: #667eea;
-        }
-
-        .myraBorder:hover .hover-tooltip {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(-50%) translateX(-10px);
-        }
-        .myraBorder.chat-is-open .hover-tooltip,
-        .myraBorder.chat-is-open:hover .hover-tooltip {
-            opacity: 0 !important;
-            visibility: hidden !important;
-        }
-
-        /* Chat Container */
-        .chat-container {
-            position: fixed;
-            bottom: 80px;
-            right: 25px;
-            width: 350px;
-            height: 450px;
-            background: #fff;
-            border-radius: 15px;
-            box-shadow: 0 8px 24px rgba(0,0,0,0.2);
-            display: flex;
-            flex-direction: column;
-            opacity: 0;
-            transform: translateY(30px);
-            pointer-events: none;
-            transition: all 0.3s ease-in-out;
-            z-index: 999;
-        }
-        .chat-container.active {
-            opacity: 1;
-            visibility: visible;
-            transform: translateY(0);
-        }
-
-        .chat-container.open {
-            opacity: 1;
-            transform: translateY(0);
-            pointer-events: auto;
-        }
-
-        .chat-header {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-            padding: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            border-top-left-radius: 15px;
-            border-top-right-radius: 15px;
-        }
-
-        .chat-header-content {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .chat-avatar {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: rgba(255,255,255,0.2);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 20px;
-        }
-
-        .chat-user-info h3 {
-            font-size: 16px;
-            margin-bottom: 2px;
-        }
-
-        .chat-user-info p {
-            font-size: 12px;
-            opacity: 0.8;
-        }
-
-        .close-chat {
-            background: none;
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            padding: 5px;
-            border-radius: 50%;
-            transition: background 0.3s;
-        }
-
-        .close-chat:hover {
-            background: rgba(255,255,255,0.2);
-        }
-
-        .chat-messages {
-            height: 280px;
-            padding: 20px;
-            overflow-y: auto;
-            background: #f8fafc;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .welcome-message {
-            background: white;
-            padding: 15px;
-            border-radius: 15px;
-            margin-bottom: 15px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-        }
-        .welcome-message p {
-            font-size: 15px; 
-        }
-
-        .welcome-message h4 {
-            color: #4f46e5;
-            margin-bottom: 8px;
-            font-size: 14px;
-        }
-
-        .quick-options {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 12px;
-        }
-
-        .quick-option {
-            background: #e0e7ff;
-            color: #4f46e5;
-            border: none;
-            padding: 8px 12px;
-            border-radius: 20px;
-            font-size: 11px;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .quick-option:hover {
-            background: #4f46e5;
-            color: white;
-        }
-
-        .chat-input-container {
-            padding: 12px 20px;
-            background: white;
-            border-top: 1px solid #e2e8f0;
-        }
-
-        .message {
-        max-width: 75%;
-        padding: 8px 12px;
-        border-radius: 12px;
-        margin: 6px 10px;
-        font-size: 14px;         
-        font-family: "Roboto", sans-serif; 
-        line-height: 1.4;
-        word-wrap: break-word;
-        }
-
-        .message.bot {
-        background: #f1f1f1;
-        color: #000;
-        align-self: flex-start;
-        padding: 8px 12px;
-        border-radius: 12px;
-        }
-        .message.user {
-        background: #007bff95;
-        color: #fff;
-        align-self: flex-end;   
-        font-family: "Poppins", sans-serif;
-        font-size: 16px;
-        max-width: 60%;
-        word-wrap: break-word;
-        overflow-wrap: break-word;
-        padding: 8px 12px;
-        border-radius: 12px;
-        }
-
-        .chat-input-wrapper {
-            display: flex;
-            align-items: center;
-            background: #f1f5f9;
-            border-radius: 25px;
-            padding: 8px 15px;
-            gap: 10px;
-        }
-
-        .chat-input {
-            flex: 1;
-            border: none;
-            background: none;
-            outline: none;
-            font-size: 14px;
-            padding: 8px 0;
-        }
-
-        .send-btn {
-            background: #4f46e5;
-            border: none;
-            color: white;
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s;
-        }
-
-        .send-btn:hover {
-            background: #3730a3;
-            transform: scale(1.1);
-        }
-
-        .send-btn::before {
-            content: '🚀';
-            font-size: 16px;
-        }
-
-        .message {
-            animation: slideInMessage 0.3s ease;
-        }
-
-        @keyframes slideInMessage {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
+.send-btn::before {
+    content: '🚀';
+    font-size: 16px;
+}
 
 .hamburger-menu {
     display: none;
@@ -1115,10 +814,6 @@
     cursor: pointer;
     padding: 5px;
     gap: 4px;
-    position: absolute; /* Changed from relative */
-    top: 20%; /* Center vertically */
-    right: 20px; /* Position from right edge */
-    transform: translateY(-50%); /* Perfect vertical centering */
     z-index: 1001;
 }
 
@@ -1127,296 +822,6 @@
     height: 3px;
     background-color: var(--extra-light);
     transition: 0.3s;
-}
-
-/* Small dropdown menu instead of full screen */
-.mobile-nav-overlay {
-    position: absolute;
-    top: 70px; /* Position below nav */
-    right: 20px; /* Align with hamburger */
-    width: 200px; /* Small fixed width */
-    background-color: rgba(28, 131, 214, 0.95); /* Primary color background */
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-    display: none;
-    z-index: 1000;
-    opacity: 0;
-    transform: translateY(-10px);
-    transition: all 0.3s ease;
-}
-
-.mobile-nav-overlay.active {
-    display: block;
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.mobile-nav-content {
-    display: flex;
-    flex-direction: column;
-    padding: 5px 0;
-}
-
-.mobile-nav-content a {
-    color: var(--extra-light);
-    font-size: 1rem; /* Smaller font size */
-    text-decoration: none;
-    text-transform: uppercase;
-    padding: 12px 20px;
-    transition: all 0.3s;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.mobile-nav-content a:last-child {
-    border-bottom: none;
-}
-
-.mobile-nav-content a:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: var(--extra-light);
-    padding-left: 25px;
-}
-
-/* Improved chat container responsiveness */
-@media (max-width: 480px) {
-    .chat-container {
-        width: 85% !important;
-        height: 300px !important;
-        right: 7.5% !important;
-        bottom: 70px !important;
-    }
-    .logo{
-        width: 140px;
-        height: 140px;
-    }
-    
-    .chat-messages {
-        height: 150px !important;
-    }
-    
-    .chat-header {
-        padding: 12px !important;
-    }
-    
-    .chat-user-info h3 {
-        font-size: 14px !important;
-    }
-    
-    .chat-user-info p {
-        font-size: 11px !important;
-    }
-}
-
-@media (max-width: 480px) {
-  .logo {
-    width: 30%; 
-    height: auto;
-  }
-}
-
-@media (min-width: 481px) and (max-width: 600px) {
-    .chat-container {
-        width: 80% !important;
-        height: 350px !important;
-        right: 10% !important;
-    }
-    .logo{
-        width: 140px;
-        height: 140px;
-    }
-    
-    .chat-messages {
-        height: 200px !important;
-    }
-}
-
-@media (min-width: 601px) and (max-width: 768px) {
-    .chat-container {
-        width: 300px !important;
-        height: 400px !important;
-        right: 20px !important;
-    }
-    
-    .chat-messages {
-        height: 250px !important;
-    }
-    .logo{
-        width: 140px;
-        height: 140px;
-    }
-}
-@media (min-width:340px) and (max-width:900px) {
-  
-    .header__content{
-        position: absolute;
-        bottom: 15% ;
-    }
-    
-    .section__container .journey__grid{
-        position: relative;
-        top: -120px !important;
-    } 
-    .virtual-tour-container{
-        position: relative;
-        top: -100px !important;
-    }
-    .section__container iframe{
-        position: relative;
-        top: -50px !important;
-    }
-    .banner__container{
-        position: relative;
-        top: -90px !important;
-    }
-    .section__container .section__title{
-        position: relative;
-        top: -70px !important;
-    }
-     .section__container .section__subtitle{
-        position: relative;
-        top: -70px !important;
-    }
-    .section__container .display__grid{
-        position: relative;
-        top: -120px !important;
-    }
-    footer{
-        position: relative;
-        top: -150px !important;
-        margin:0 10px ;
-    }
-    footer .section__container{
-        position: relative;
-        top: -10px !important;
-    }
-    .display__container{
-        position: relative;
-        top: -80px !important;
-    }
-
-    .mobile-nav-overlay.active{
-        width: 170px;
-        height: 160px;
-    }
-    .myraIcon{
-        position: relative;
-        bottom: -40px !important;
-    }
-    .chat-container{
-        width: 280px !important;
-    }
-    .mobile-nav-content a{
-        font-size: small;
-    }
-}
-@media (max-width:1024px) {
-     .header__content{
-        position: absolute;
-        bottom: 15% ;
-    }
-    
-}
-
-@media (min-width: 769px) and (max-width: 999px) {
-    .chat-container {
-        width: 320px !important;
-        height: 420px !important;
-    }
-    
-    .chat-messages {
-        height: 270px !important;
-    }
-    .logo{
-        width: 140px;
-        height: 140px;
-    }
-}
-
-/* Small tablet (640-767px) */
-@media (min-width: 640px) and (max-width: 767px) {
-    .hamburger-menu {
-        display: flex;
-    }
-    .nav__links {
-        display: none !important;
-    }
-    
-    .header__content h1 {
-        font-size: 2.5rem !important;
-        line-height: 2.5rem !important;
-    }
-    
-    .header__content p {
-        font-size: 1rem !important;
-    }
-}
-
-/* Medium tablet (768-999px) */
-@media (min-width: 768px) and (max-width: 999px) {
-    .hamburger-menu {
-        display: flex;
-    }
-    .nav__links {
-        display: none !important;
-    }
-    
-    .header__content h1 {
-        font-size: 3rem !important;
-        line-height: 3rem !important;
-    }
-    
-    .header__content p {
-        font-size: 1.1rem !important;
-    }
-    
-}
-
-/* Desktop (1000-1269px) */
-@media (min-width: 1000px) and (max-width: 1269px) {
-    .hamburger-menu {
-        display: none;
-    }
-    .nav__links {
-        display: flex !important;
-        gap: 1.5rem;
-    }
-    
-    .header__content h1 {
-        font-size: 3.5rem !important;
-        line-height: 3.5rem !important;
-    }
-    
-    .header__content p {
-        font-size: 1rem !important;
-    }
-    
-}
-@media (min-width:300px) and (max-width:450px) {
-    .header__content{
-        position: absolute;
-        bottom: 15% ;
-    }
-}
-
-/* Large desktop (1270-1476px and above) */
-@media (min-width: 1270px) {
-    .hamburger-menu {
-        display: none;
-    }
-    .nav__links {
-        display: flex !important;
-        gap: 2rem;
-    }
-    
-    .header__content h1 {
-        font-size: 4.5rem !important;
-        line-height: 4.5rem !important;
-    }
-    
-    .header__content p {
-        font-size: 1.7rem !important;
-    }
-    
 }
 
 .hamburger-menu.open span:nth-child(1) {
@@ -1431,7 +836,27 @@
     transform: rotate(-45deg) translate(7px, -6px);
 }
 
-/* Add arrow indicator for dropdown */
+.mobile-nav-overlay {
+    position: fixed;
+    top: 80px;
+    right: 20px;
+    width: 170px;
+    background-color: rgba(28, 131, 214, 0.95);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: none;
+    z-index: 999;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.mobile-nav-overlay.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+
 .mobile-nav-overlay::before {
     content: '';
     position: absolute;
@@ -1443,99 +868,598 @@
     border-right: 8px solid transparent;
     border-bottom: 8px solid rgba(28, 131, 214, 0.95);
 }
-@media (max-width:715px) {
+
+.mobile-nav-content {
+    display: flex;
+    flex-direction: column;
+    padding: 5px 0;
+}
+
+.mobile-nav-content a {
+    color: var(--extra-light);
+    font-size: 1rem;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    transition: all 0.3s;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobile-nav-content a:last-child {
+    border-bottom: none;
+}
+
+.mobile-nav-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    padding-left: 25px;
+}
+
+@media (max-width: 480px) {
+
+    nav {
+        padding: 1rem;
+        height: 60px;
+    }
+
+    .logo {
+        max-width: 120px;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav__links {
+        display: none !important;
+    }
+
+    header {
+        justify-content: end;
+        align-items: end;
+    }
+
+    .header__content h1 {
+        font-size: 2.5rem;
+        line-height: 1.2;
+    }
+
+    .header__content p {
+        font-size: 0.9rem;
+    }
+
+    .header__content button {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+
+    .section__container {
+        padding: 2rem 1rem;
+    }
+
+    .section__title {
+        font-size: 1.5rem;
+    }
+
+    .section__subtitle {
+        font-size: 0.9rem;
+        margin-bottom: 2rem;
+    }
+
+    .journey__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .photo {
+        height: 220px;
+    }
+
+    .virtual-tour-container iframe {
+        height: 300px;
+    }
+
+    .banner__container {
+        margin: 1rem 0.5rem;
+    }
+
+    .banner__container .section__container {
+        padding: 4rem 1.5rem;
+    }
+
+    .banner__content h2 {
+        font-size: 1.5rem;
+    }
+
+    .banner__content p {
+        font-size: 0.9rem;
+    }
+
+    .display__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .display__grid .grid-1 {
+        grid-column: span 1;
+    }
+
+    .display__card {
+        padding: 1.5rem 1rem;
+    }
+
+    .display__card i {
+        font-size: 2rem;
+    }
+
+    .display__card h4 {
+        font-size: 1rem;
+    }
+
+    .display__card p {
+        font-size: 0.85rem;
+    }
+
+    footer .section__container {
+        padding: 2rem 1rem;
+    }
+
+    footer h2 {
+        font-size: 1.5rem;
+    }
+
+    footer p {
+        font-size: 0.9rem;
+    }
+
     #sos-button {
-       padding: 12px;
-       font-size: 14px;
+        padding: 12px 18px;
+        font-size: 14px;
+        bottom: 15px;
+        right: 15px;
     }
-    header{
-        height:727px;
-        background-size: 100% 100%;
+
+    .chat-container {
+        width: 90%;
+        height: 400px;
+        right: 5%;
+        bottom: 90px;
     }
-    .logo{
-        position: relative;
-        top: -22px;
-        left: -10px;
+
+    .chat-messages {
+        height: 250px;
     }
-    .banner__container{
-        margin: 0px 10px;
+
+    .myraBorder {
+        bottom: 480px;
+        right: 0;
     }
-    .myraIcon{
-        width: 55px;
-        height: 55px;
-        left: 10px;
-        top: -80px;
+    .myraIcon {
+        height: 50px;
+        width: 50px;
     }
+
     #auth-buttons-container {
-        position: relative;
-        top: -20px;
-        right: 60px;
+        gap: 0.5rem;
     }
-    .hamburger-menu{
-        top: 38px;
+
+    .login-btn, .logout-btn, .register-btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.8rem;
     }
 }
 
-@media (min-width:1200px) and (max-width:1500px){
-    .logo{
-        position: relative;
-        left: -60px;
+@media (min-width: 481px) and (max-width: 639px) {
+
+    nav {
+        padding: 1.2rem;
+        height: 60px;
+    }
+
+    .logo {
+        max-width: 130px;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav__links {
+        display: none !important;
+    }
+
+    header {
+        align-items: end;
+        justify-content: end;
+    }
+
+    .header__content h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+    }
+
+    .header__content p {
+        font-size: 1rem;
+    }
+
+    .journey__grid {
+        grid-template-columns: 1fr;
+    }
+
+    .photo {
+        height: 240px;
+    }
+
+    .virtual-tour-container iframe {
+        height: 350px;
+    }
+
+    .banner__container .section__container {
+        padding: 5rem 2rem;
+    }
+
+    .banner__content h2 {
+        font-size: 1.8rem;
+    }
+
+    .display__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .display__grid .grid-1 {
+        grid-column: span 2;
+    }
+
+    .chat-container {
+        width: 85%;
+        height: 420px;
+        right: 7.5%;
+        bottom: 100px;
+    }
+
+    .chat-messages {
+        height: 270px;
+    }
+
+    .myraBorder {
+        bottom: 480px;
     }
 }
 
-@media (min-width:715px) and (max-width:1200px){
-    .logo{
-        position: relative;
-        left: 0px;
+@media (min-width: 640px) and (max-width: 767px) {
+    nav {
+        padding: 1rem;
+        height: 60px;
+    }
+    .logo {
+        max-width: 140px;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav__links {
+        display: none !important;
+    }
+
+    header {
+        justify-content: end;
+        align-items: end;
+
+    }
+
+    .header__content h1 {
+        font-size: 3rem;
+        line-height: 1.2;
+    }
+
+    .header__content p {
+        font-size: 1.1rem;
+    }
+
+    .journey__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .photo {
+        height: 250px;
+    }
+
+    .virtual-tour-container iframe {
+        height: 400px;
+    }
+
+    .banner__container .section__container {
+        padding: 6rem 2rem;
+    }
+
+    .banner__content h2 {
+        font-size: 2rem;
+    }
+
+    .display__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .display__grid .grid-1 {
+        grid-column: span 2;
+    }
+
+    .chat-container {
+        width: 340px;
+        height: 450px;
+    }
+
+    .myraBorder {
+        bottom: 480px;
     }
 }
 
-@media (min-width:340px) and (max-width:962px){
-    .section__container{
-        position: relative;
-        bottom: -55px;
+@media (min-width: 768px) and (max-width: 1023px) {
+
+    nav {
+        padding: 0.8rem;
+        height: 65px;
     }
-    
+
+    .logo {
+        max-width: 150px;
+    }
+
+    .hamburger-menu {
+        display: flex;
+    }
+
+    .nav__links {
+        display: none !important;
+    }
+
+    header {
+        justify-content: end;
+        align-items: end;
+
+    }
+
+    .header__content h1 {
+        font-size: 3.5rem;
+        line-height: 1.2;
+    }
+
+    .header__content p {
+        font-size: 1.15rem;
+    }
+
+    .journey__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .photo {
+        height: 260px;
+    }
+
+    .virtual-tour-container iframe {
+        height: 500px;
+    }
+
+    .banner__container .section__container {
+        padding: 7rem 2rem;
+    }
+
+    .banner__content h2 {
+        font-size: 2.2rem;
+    }
+
+    .display__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .display__grid .grid-1 {
+        grid-column: span 2;
+    }
+
+    .chat-container {
+        width: 360px;
+        height: 470px;
+    }
+
+    .chat-messages {
+        height: 300px;
+    }
 }
 
-@media (max-width: 1300px) {
-    nav{
+@media (min-width: 1024px) and (max-width: 1269px) {
+    nav {
+        height: 70px;
+    }
+    .logo {
+        max-width: 160px;
+    }
+
+    a {
+        font-size: large;
+    }
+
+    .nav__links {
+        display: flex !important;
+        gap: 1.5rem;
+    }
+
+    .link {
+        font-size: 0.9rem;
+    }
+
+    .hamburger-menu {
+        display: none;
+    }
+
+    header {
+        position: relative;
+    }
+
+    header .section__container {
         position: absolute;
-        top: 0;
-        left: 50%;
-    } 
+        left: 0;
+    }
+    .header__content {
+        justify-content: start;
+        align-items: start;
+    }
+
+    .header__content h1 {
+        font-size: 4rem;
+        line-height: 1.2;
+    }
+
+    .header__content p {
+        font-size: 1.2rem;
+        text-align: left;
+    }
+
+    .journey__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .photo {
+        height: 270px;
+    }
+
+    .virtual-tour-container iframe {
+        height: 550px;
+    }
+
+    .banner__content {
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    .banner__content h2 {
+        font-size: 2.5rem;
+    }
+
+    .display__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .display__grid .grid-1 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
 }
 
-@media (max-width: 1200px) {
-    nav{
+@media (min-width: 1270px) {
+    nav {
+        height: 70px;
+    }
+    .logo {
+        max-width: 170px;
+    }
+
+    .nav__links {
+        display: flex !important;
+        gap: 2rem;
+    }
+
+    .hamburger-menu {
+        display: none;
+    }
+
+    header {
+        position: relative;
+    }
+
+    header .section__container {
         position: absolute;
-        top: 0;
-        left: 48%;
-    } 
+        left: 0;
+    }
+    .header__content {
+        justify-content: start;
+        align-items: start;
+    }
+
+    .header__content h1 {
+        font-size: 4.5rem;
+        line-height: 1.2;
+    }
+
+    .header__content p {
+        font-size: 1.3rem;
+        text-align: left;
+    }
+
+    .journey__grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .photo {
+        height: 280px;
+    }
+
+    .virtual-tour-container iframe {
+        height: 600px;
+    }
+
+    .banner__content {
+        align-items: flex-end;
+        text-align: right;
+    }
+
+    .banner__content h2 {
+        font-size: 2.5rem;
+    }
+
+    .banner__content p {
+        font-size: 1.1rem;
+    }
+
+    .display__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .display__grid .grid-1 {
+        grid-column: span 2;
+        grid-row: span 2;
+    }
+
+    .display__card i {
+        font-size: 3rem;
+    }
+
+    .display__card h4 {
+        font-size: 1.3rem;
+    }
+
+    .display__card p {
+        font-size: 1rem;
+    }
 }
 
+@media (max-width: 1023px) {
+    .banner__content {
+        align-items: center;
+        text-align: center;
+    }
+}
     </style>
 </head>
-<body>
 
+<body>
     <nav>
         <div class="logo" id="logo">
             <img src="./images/logo1.png" alt="website logo" />
         </div>
+        
+        <div class="nav__logo"><a href="#"></a></div>
+
+        <ul class="nav__links" id="nav-links">
+            <a href="index.html">HOME</a>
+            <a href="offers_page.html">EXPLORE OFFERS</a>
+            <a href="userbookings.html">BOOKINGS</a>
+            <a href="contactform.html">CONTACT US</a>
+        </ul>
+        <div id="auth-buttons-container"></div>
         <div class="hamburger-menu" id="hamburger-menu">
             <span></span>
             <span></span>
             <span></span>
         </div>
-
-        <div class="nav__logo"><a href="#"></a></div>
-        <ul class="nav__links" id="nav-links">
-            <li class="link">Home</li>
-            <a href="offers_page.html" >EXPLORE OFFERS</a>
-            <a href="userbookings.html" >BOOKINGS</a>
-            <a href="contactform.html">CONTACT US</a>
-        </ul>
-        <div id="auth-buttons-container"></div>
     </nav>
 
     <div class="mobile-nav-overlay" id="mobile-nav-overlay">
@@ -1646,7 +1570,7 @@
         <div class="section__container">
             <h2 class="section__title">Why Choose Us</h2>
             <p class="section__subtitle">
-                    The gladdest moment in human life, is a departure into unknown lands.
+                The gladdest moment in human life, is a departure into unknown lands.
             </p>
             <div class="display__grid">
                 <div class="display__card grid-1">
@@ -1681,8 +1605,7 @@
                 <span><a href="https://www.linkedin.com/in/anand-kumar-tutipati-b16796371/" target="_blank"><i class="ri-linkedin-fill"></i></a></span>
             </div>
             <p>
-                Travel makes one modest. You see what a tiny place you occupy in the
-                world.
+                Travel makes one modest. You see what a tiny place you occupy in the world.
             </p>
         </div>
     </footer>
@@ -1737,272 +1660,262 @@
     <script type="module">
         import { GoogleGenerativeAI } from 'https://esm.run/@google/generative-ai';
 
-        const API_KEY = "AIzaSyBhx6CjYTsh-Rmnad1EgQ6NF09gsNzNMdk"; 
-        const ai = new GoogleGenerativeAI(API_KEY);
-        const model = ai.getGenerativeModel({ model: "gemini-2.5-flash" });
-        const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-        const BASE_URL = isLocal ? 'http://localhost:3000' : '';
+const API_KEY = "AIzaSyBhx6CjYTsh-Rmnad1EgQ6NF09gsNzNMdk";
+const ai = new GoogleGenerativeAI(API_KEY);
+const model = ai.getGenerativeModel({ model: "gemini-2.5-flash" });
+const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+const BASE_URL = isLocal ? 'http://localhost:3000' : '';
 
-        const promptInput = document.getElementById('chatInput');
-        const sendButton = document.querySelector('.send-btn');
-        const chatMessages = document.getElementById('chatMessages');
-        let selectedOption = ""; // track which button user pressed
+const promptInput = document.getElementById('chatInput');
+const chatMessages = document.getElementById('chatMessages');
+let selectedOption = "";
 
-        function addMessageToChat(text, sender) {
-            const msgDiv = document.createElement('div');
-            msgDiv.classList.add('message', sender);
-            msgDiv.innerHTML = text;
-            chatMessages.appendChild(msgDiv);
-            chatMessages.scrollTop = chatMessages.scrollHeight;
+function addMessageToChat(text, sender) {
+    const msgDiv = document.createElement('div');
+    msgDiv.classList.add('message', sender);
+    msgDiv.innerHTML = text;
+    chatMessages.appendChild(msgDiv);
+    chatMessages.scrollTop = chatMessages.scrollHeight;
+}
+
+window.sendMessage = async function() {
+    const message = promptInput.value.trim();
+    if (message === '') return;
+
+    addMessageToChat(message, 'user');
+    promptInput.value = '';
+
+    let intent = "";
+    let data = {};
+    let isGeneral = false;
+
+    if (selectedOption === "weather") {
+        intent = "weather";
+        data.city = message;
+    } else if (selectedOption === "distance") {
+        intent = "distance";
+        if (message.toLowerCase().includes(" to ")) {
+            const parts = message.split(/ to /i);
+            data.origin = parts[0].trim();
+            data.destination = parts[1].trim();
+        } else {
+            data.origin = "Hyderabad";
+            data.destination = message;
         }
+    } else if (selectedOption === "flights") {
+        intent = "flights";
+        data.destination = message;
+    } else if (selectedOption === "hotels") {
+        intent = "hotels";
+        data.destination = message;
+    } else {
+        isGeneral = true;
+    }
 
-            window.sendMessage = async function() {
-            const message = promptInput.value.trim();
-            if (message === '') return;
-
-            addMessageToChat(message, 'user');
-            promptInput.value = '';
-
-            let intent = "";
-            let data = {};
-            let isGeneral = false;
-
-            if (selectedOption === "weather") {
-                intent = "weather";
-                data.city = message;
-            } else if (selectedOption === "distance") {
-                intent = "distance";
-                if (message.toLowerCase().includes(" to ")) {
-                    const parts = message.split(/ to /i);
-                    data.origin = parts[0].trim();
-                    data.destination = parts[1].trim();
-                } else {
-                    data.origin = "Hyderabad"; 
-                    data.destination = message;
-                }
-            } else if (selectedOption === "flights") {
-                intent = "flights";
-                data.destination = message;
-            } else if (selectedOption === "hotels") {
-                intent = "hotels";
-                data.destination = message;
-            } else {
-                isGeneral = true;
-            }
-
-            if (isGeneral) {
-                try {
-                    const result = await model.generateContent(message);
-                    const responseText = result.response.text();
-                    addMessageToChat(responseText, 'bot');
-                } catch (geminiError) {
-                    console.error("Error generating content from Gemini:", geminiError);
-                    addMessageToChat("An error occurred with the AI. Please try again.", 'bot');
-                }
-            } else {
-                try {
-                    const response = await fetch(`${BASE_URL}/api/chat`, {
-                        method: "POST",
-                        headers: { "Content-Type": "application/json" },
-                        body: JSON.stringify({ intent, data })
-                    });
-
-                    const result = await response.json();
-                    addMessageToChat(result.reply, "bot");
-                } catch (err) {
-                    addMessageToChat("⚠️ Error connecting to server.", "bot");
-                    console.error("Chat fetch error:", err);
-                }
-            }
-            selectedOption = ""; 
+    if (isGeneral) {
+        try {
+            const result = await model.generateContent(message);
+            const responseText = result.response.text();
+            addMessageToChat(responseText, 'bot');
+        } catch (geminiError) {
+            console.error("Error generating content from Gemini:", geminiError);
+            addMessageToChat("An error occurred with the AI. Please try again.", 'bot');
         }
-
-        window.sendQuickMessage = function(option) {
-            selectedOption = option.toLowerCase();
-            if (selectedOption === "weather") {
-                addMessageToChat("⛅ Ask me: What city’s weather do you want to check?", "bot");
-            } else if (selectedOption === "distance") {
-                addMessageToChat("📍 Tell me: From which city to which city do you want to calculate distance? (e.g., Chennai to Spain)", "bot");
-            } else if (selectedOption === "flights") {
-                addMessageToChat("✈️ Tell me the origin and destination to find flights. (e.g., Hyderabad to Delhi)", "bot");
-            } else if (selectedOption === "hotels") {
-                addMessageToChat("🏨 Tell me the city where you want to find hotels.", "bot");
-            }
-        }
-        
-        window.toggleChat = async function() {
-            const token = localStorage.getItem('token');
-            if (!token) {
-                showCustomModal('Please log in to access the chat assistant.');
-                setTimeout(() => {
-                    window.location.href = 'loginform.html';
-                }, 2000);
-                return;
-            }
-
-            const chatContainer = document.getElementById('chatContainer');
-            const myraIcon = document.querySelector('.myraIcon');
-            const myraBorder = document.querySelector('.myraBorder');
-
-            chatContainer.classList.toggle('open');
-            myraIcon.classList.toggle('hidden');
-            myraBorder.classList.toggle('chat-is-open');
-        }
-
-        window.handleKeyPress = function (event) {
-            if (event.key === 'Enter') {
-                sendMessage();
-            }
-        }
-
-        function showCustomModal(message) {
-            document.getElementById('modal-message').textContent = message;
-            document.getElementById('custom-alert-modal').style.display = 'flex';
-        }
-
-       window.closeModal = function () {
-            document.getElementById('custom-alert-modal').style.display = 'none';
-        }
-
-       window.callSOS = function () {
-            showCustomModal('Emergency SOS triggered! Redirecting to help...');
-            setTimeout(() => window.location.href = "tel:112", 2000);
-        }
-
-        function handleBookNow() {
-            if (localStorage.getItem('token')) {
-                window.location.href = 'services.html';
-            } else {
-                showCustomModal("You must be logged in to book tickets.");
-                setTimeout(() => {
-                    window.location.href = 'loginform.html';
-                }, 2000);
-            }
-        }
-
-        window.handleLogout = function() {
-            localStorage.removeItem('token'); 
-            updateAuthUI();
-            initializeChat(); 
-            showCustomModal("You have been logged out successfully!");
-            setTimeout(() => {
-                window.location.href = 'index.html'; 
-            }, 2000);
-        }
-       window.updateAuthUI = function() {
-            const authContainer = document.getElementById('auth-buttons-container');
-            authContainer.innerHTML = '';
-            
-            if (localStorage.getItem('token')) {
-                authContainer.innerHTML = `
-                    <li class="link auth-btn">
-                        <button class="logout-btn" onclick="handleLogout()">Logout</button>
-                    </li>
-                `;
-            } else {
-                authContainer.innerHTML = `
-                    <li class="link auth-btn">
-                        <a href="loginform.html"><button class="login-btn">Login</button></a>
-                    </li>
-                    <li class="link auth-btn">
-                        <a href="registration_form.html"><button class="register-btn">Register</button></a>
-                    </li>
-                `;
-            }
-        }
-
-        // New function to fetch user data and set short name
-        async function fetchUserData() {
-            const token = localStorage.getItem('token');
-            if (!token) return;
-
-            try {
-                const response = await fetch(`${BASE_URL}/api/auth/me`, {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json',
-                    },
-                });
-
-                if (response.ok) {
-                    const user = await response.json();
-                    const fullName = user.name || 'User';
-                    // Extract short name: take the first word (e.g., "TUTIPATI ANAND KUMAR" -> "TUTIPATI", "phinihas gandi" -> "phinihas")
-                    // If you want the last word (e.g., "Anand"), change to fullName.split(' ').pop().trim()
-                    const shortName = fullName.split(' ')[0].trim();
-                    document.getElementById('userName').textContent = `Hi, ${shortName}`;
-                } else {
-                    console.error('Failed to fetch user data');
-                }
-            } catch (error) {
-                console.error('Error fetching user data:', error);
-            }
-        }
-
-        // Initialize chat based on login status
-        function initializeChat() {
-            const token = localStorage.getItem('token');
-            const myraBorder = document.getElementById('myraBorder');
-            const userName = document.getElementById('userName');
-
-            if (token) {
-                myraBorder.classList.remove('disabled');
-                userName.textContent = 'Hi, there'; // Placeholder until fetched
-                fetchUserData(); // Fetch and set real name
-            } else {
-                myraBorder.classList.add('disabled');
-                userName.textContent = 'Guest'; // Or hide chat entirely if preferred
-            }
-        }
-
-        // Mobile menu toggle function with proper toggle behavior
-         window.toggleMobileNav = function () {
-            const overlay = document.getElementById('mobile-nav-overlay');
-            const hamburger = document.getElementById('hamburger-menu');
-            
-            if (overlay.classList.contains('active')) {
-                // Close menu
-                overlay.classList.remove('active');
-                hamburger.classList.remove('open');
-            } else {
-                // Open menu
-                overlay.classList.add('active');
-                hamburger.classList.add('open');
-            }
-        }
-
-        // Close mobile navigation
-        window.closeMobileNav = function () {
-            const overlay = document.getElementById('mobile-nav-overlay');
-            const hamburger = document.getElementById('hamburger-menu');
-            overlay.classList.remove('active');
-            hamburger.classList.remove('open');
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.getElementById('book-now-btn').addEventListener('click', handleBookNow);
-            updateAuthUI();
-            initializeChat(); // Initialize chat on load
-           // Add hamburger menu event listener
-            const hamburgerMenu = document.getElementById('hamburger-menu');
-            if (hamburgerMenu) {
-                hamburgerMenu.addEventListener('click', toggleMobileNav);
-            }
-            
-            // Close mobile nav when clicking outside (only for small dropdown)
-            document.addEventListener('click', (e) => {
-                const overlay = document.getElementById('mobile-nav-overlay');
-                const hamburger = document.getElementById('hamburger-menu');
-                
-                if (overlay && hamburger) {
-                    // If click is outside both overlay and hamburger, close menu
-                    if (!overlay.contains(e.target) && !hamburger.contains(e.target)) {
-                        closeMobileNav();
-                    }
-                }
+    } else {
+        try {
+            const response = await fetch(`${BASE_URL}/api/chat`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ intent, data })
             });
+
+            const result = await response.json();
+            addMessageToChat(result.reply, "bot");
+        } catch (err) {
+            addMessageToChat("⚠️ Error connecting to server.", "bot");
+            console.error("Chat fetch error:", err);
+        }
+    }
+    selectedOption = "";
+}
+
+window.sendQuickMessage = function(option) {
+    selectedOption = option.toLowerCase();
+    if (selectedOption === "weather") {
+        addMessageToChat("⛅ Ask me: What city's weather do you want to check?", "bot");
+    } else if (selectedOption === "distance") {
+        addMessageToChat("📍 Tell me: From which city to which city do you want to calculate distance? (e.g., Chennai to Spain)", "bot");
+    } else if (selectedOption === "flights") {
+        addMessageToChat("✈️ Tell me the origin and destination to find flights. (e.g., Hyderabad to Delhi)", "bot");
+    } else if (selectedOption === "hotels") {
+        addMessageToChat("🏨 Tell me the city where you want to find hotels.", "bot");
+    }
+}
+
+window.toggleChat = async function() {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        showCustomModal('Please log in to access the chat assistant.');
+        setTimeout(() => {
+            window.location.href = 'loginform.html';
+        }, 2000);
+        return;
+    }
+
+    const chatContainer = document.getElementById('chatContainer');
+    const myraIcon = document.querySelector('.myraIcon');
+    const myraBorder = document.querySelector('.myraBorder');
+
+    chatContainer.classList.toggle('open');
+    myraIcon.classList.toggle('hidden');
+    myraBorder.classList.toggle('chat-is-open');
+}
+
+window.handleKeyPress = function(event) {
+    if (event.key === 'Enter') {
+        sendMessage();
+    }
+}
+
+function showCustomModal(message) {
+    document.getElementById('modal-message').textContent = message;
+    document.getElementById('custom-alert-modal').style.display = 'flex';
+}
+
+window.closeModal = function() {
+    document.getElementById('custom-alert-modal').style.display = 'none';
+}
+
+window.callSOS = function() {
+    showCustomModal('Emergency SOS triggered! Redirecting to help...');
+    setTimeout(() => window.location.href = "tel:112", 2000);
+}
+
+function handleBookNow() {
+    if (localStorage.getItem('token')) {
+        window.location.href = 'services.html';
+    } else {
+        showCustomModal("You must be logged in to book tickets.");
+        setTimeout(() => {
+            window.location.href = 'loginform.html';
+        }, 2000);
+    }
+}
+
+window.handleLogout = function() {
+    localStorage.removeItem('token');
+    updateAuthUI();
+    initializeChat();
+    showCustomModal("You have been logged out successfully!");
+    setTimeout(() => {
+        window.location.href = 'index.html';
+    }, 2000);
+}
+
+window.updateAuthUI = function() {
+    const authContainer = document.getElementById('auth-buttons-container');
+    authContainer.innerHTML = '';
+
+    if (localStorage.getItem('token')) {
+        authContainer.innerHTML = `
+            <li class="link auth-btn">
+                <button class="logout-btn" onclick="handleLogout()">Logout</button>
+            </li>
+        `;
+    } else {
+        authContainer.innerHTML = `
+            <li class="link auth-btn">
+                <a href="loginform.html"><button class="login-btn">Login</button></a>
+            </li>
+            <li class="link auth-btn">
+                <a href="registration_form.html"><button class="register-btn">Register</button></a>
+            </li>
+        `;
+    }
+}
+
+async function fetchUserData() {
+    const token = localStorage.getItem('token');
+    if (!token) return;
+
+    try {
+        const response = await fetch(`${BASE_URL}/api/auth/me`, {
+            method: 'GET',
+            headers: {
+                'Authorization': `Bearer ${token}`,
+                'Content-Type': 'application/json',
+            },
         });
+
+        if (response.ok) {
+            const user = await response.json();
+            const fullName = user.name || 'User';
+            const shortName = fullName.split(' ')[0].trim();
+            document.getElementById('userName').textContent = `Hi, ${shortName}`;
+        } else {
+            console.error('Failed to fetch user data');
+        }
+    } catch (error) {
+        console.error('Error fetching user data:', error);
+    }
+}
+
+function initializeChat() {
+    const token = localStorage.getItem('token');
+    const myraBorder = document.getElementById('myraBorder');
+    const userName = document.getElementById('userName');
+
+    if (token) {
+        myraBorder.classList.remove('disabled');
+        userName.textContent = 'Hi, there';
+        fetchUserData();
+    } else {
+        myraBorder.classList.add('disabled');
+        userName.textContent = 'Guest';
+    }
+}
+
+window.toggleMobileNav = function() {
+    const overlay = document.getElementById('mobile-nav-overlay');
+    const hamburger = document.getElementById('hamburger-menu');
+
+    if (overlay.classList.contains('active')) {
+        overlay.classList.remove('active');
+        hamburger.classList.remove('open');
+    } else {
+        overlay.classList.add('active');
+        hamburger.classList.add('open');
+    }
+}
+
+window.closeMobileNav = function() {
+    const overlay = document.getElementById('mobile-nav-overlay');
+    const hamburger = document.getElementById('hamburger-menu');
+    overlay.classList.remove('active');
+    hamburger.classList.remove('open');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    document.getElementById('book-now-btn').addEventListener('click', handleBookNow);
+    updateAuthUI();
+    initializeChat();
+
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+    if (hamburgerMenu) {
+        hamburgerMenu.addEventListener('click', toggleMobileNav);
+    }
+
+    document.addEventListener('click', (e) => {
+        const overlay = document.getElementById('mobile-nav-overlay');
+        const hamburger = document.getElementById('hamburger-menu');
+
+        if (overlay && hamburger) {
+            if (!overlay.contains(e.target) && !hamburger.contains(e.target)) {
+                closeMobileNav();
+            }
+        }
+    });
+});
     </script>
 </body>
 </html>
