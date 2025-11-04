@@ -733,7 +733,7 @@
             if (response.ok) {
                 showNotification(data.msg || 'OTP sent successfully!', 'success');
                 otpSent = true;
-                // otpInput.value = data.otp;
+                otpInput.value = data.otp;
                 otpInput.disabled = false;
                 sendOtpBtn.textContent = 'Resend OTP';
                 sendOtpBtn.style.background = 'linear-gradient(90deg, #12f2a5, #14ffe9)';
