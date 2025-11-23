@@ -736,7 +736,6 @@
                 otpInput.disabled = false;
                 sendOtpBtn.textContent = 'Resend OTP';
                 sendOtpBtn.style.background = 'linear-gradient(90deg, #12f2a5, #14ffe9)';
-                verifyOTP(); 
                 startOTPTimer();
             } else {
                 showNotification(data.msg || 'Failed to send OTP', 'error');
@@ -825,7 +824,7 @@
                 showNotification('Registration completed successfully! Welcome to Tripzo!', 'success');
                 setTimeout(() => {
                      window.location.href = "./loginform.html";
-                }, 2000);
+                }, 1000);
 
                 registerForm.reset();
                 otpSent = false;

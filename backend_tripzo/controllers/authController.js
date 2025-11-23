@@ -21,7 +21,7 @@ exports.requestOTP = async (req, res) => {
         }
 
         const otp = generateOTP();
-        unverifiedUsers[email] = { otp, phone };
+        unverifiedUsers[email] = { otp, phone, expiresAt: Date.now() + 10 * 60 * 1000 };
         
         await sendEmailOTP(email, otp); 
 
@@ -40,14 +40,25 @@ exports.verifyOTP = async (req, res) => {
         const { email, otp } = req.body;
 
         const userData = unverifiedUsers[email];
-        if (!userData || userData.otp !== otp) {
-            return res.status(400).json({ msg: "Invalid OTP or user not found" });
+        if (!userData) {
+            return res.status(400).json({ msg: "OTP expired or not found, request a new one" });
         }
-        
-        res.json({ msg: "✅ OTP verified successfully. You can now complete registration." });
+
+        // expiry check
+        if (Date.now() > userData.expiresAt) {
+            delete unverifiedUsers[email];
+            return res.status(400).json({ msg: "OTP expired, please request a new one" });
+        }
+
+        if (userData.otp !== otp) {
+            return res.status(400).json({ msg: "Invalid OTP" });
+        }
+
+        res.json({ msg: "OTP verified successfully!" });
+
     } catch (err) {
         console.error("Error in verifyOTP:", err);
-        res.status(500).json({ msg: "Server Error", error: err.message });
+        res.status(500).json({ msg: "Server Error" });
     }
 };
 
