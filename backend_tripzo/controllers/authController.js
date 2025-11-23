@@ -23,7 +23,7 @@ exports.requestOTP = async (req, res) => {
         const otp = generateOTP();
         unverifiedUsers[email] = { otp, phone };
         
-        await sendEmailOTP(process.env.EMAIL_USER, otp); 
+        await sendEmailOTP(email, otp); 
 
         res.status(201).json({ msg: "OTP sent to your email. Please verify!", otp });
     } catch (err) {
