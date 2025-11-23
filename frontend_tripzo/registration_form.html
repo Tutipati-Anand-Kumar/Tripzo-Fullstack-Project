@@ -821,15 +821,11 @@
 
             const data = await response.json();
 
-           if (response.ok) {
-            showNotification('Registration completed successfully! Welcome to Tripzo!', 'success');
-
-            setTimeout(() => {
-                window.location.href = "./loginform.html";
-                  }, 2000);
-
-                  return;
-            }
+            if (response.ok) {
+                showNotification('Registration completed successfully! Welcome to Tripzo!', 'success');
+                setTimeout(() => {
+                     window.location.href = "./loginform.html";
+                }, 2000);
 
                 registerForm.reset();
                 otpSent = false;
