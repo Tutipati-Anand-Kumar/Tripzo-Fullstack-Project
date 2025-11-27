@@ -1735,11 +1735,7 @@ footer p {
 
 
     <script type="module">
-        import { GoogleGenerativeAI } from 'https://esm.run/@google/generative-ai';
 
-const API_KEY = "AIzaSyBhx6CjYTsh-Rmnad1EgQ6NF09gsNzNMdk";
-const ai = new GoogleGenerativeAI(API_KEY);
-const model = ai.getGenerativeModel({ model: "gemini-2.5-flash" });
 const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
 const BASE_URL = isLocal ? 'http://localhost:3000' : '';
 
@@ -1789,16 +1785,21 @@ window.sendMessage = async function() {
         isGeneral = true;
     }
 
-    if (isGeneral) {
-        try {
-            const result = await model.generateContent(message);
-            const responseText = result.response.text();
-            addMessageToChat(responseText, 'bot');
-        } catch (geminiError) {
-            console.error("Error generating content from Gemini:", geminiError);
-            addMessageToChat("An error occurred with the AI. Please try again.", 'bot');
-        }
-    } else {
+   if (isGeneral) {
+    try {
+        const response = await fetch(`${BASE_URL}/api/chat`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ intent: 'general_chat', data: { message: message } }) 
+        });
+        const result = await response.json();
+        addMessageToChat(result.reply, "bot");
+            } catch (err) {
+                console.error("Chat fetch error:", err);
+                addMessageToChat("⚠️ Error connecting to server.", "bot");
+            }
+     }
+    else {
         try {
             const response = await fetch(`${BASE_URL}/api/chat`, {
                 method: "POST",
