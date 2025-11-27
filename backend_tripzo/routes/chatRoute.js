@@ -1,8 +1,11 @@
-// routes/chatRoute.js
-
 const express = require("express");
 const router = express.Router();
 require("dotenv").config();
+const { GoogleGenerativeAI } = require("@google/generative-ai");
+
+const genAI = new GoogleGenerativeAI(process.env.MY_GEMINI_KEY);
+console.log("Current API Key being used:", process.env.MY_GEMINI_KEY);
+const model = genAI.getGenerativeModel({ model: "gemini-2.5-flash" || "gemini-1.5-flash"}); 
 
 const { getWeatherByCity } = require("../utils/weather");
 const { getDistance } = require("../utils/distance");
@@ -13,6 +16,7 @@ router.post("/", async (req, res) => {
     const { intent, data } = req.body;
 
     try {
+        // --- 1. WEATHER ---
         if (intent === "weather") {
             const weatherData = await getWeatherByCity(data.city);
             if (!weatherData)
@@ -24,9 +28,10 @@ router.post("/", async (req, res) => {
             💧 Humidity  : ${weatherData.humidity}%
             💨 Wind      : ${weatherData.windSpeed ?? "N/A"} m/s
             📖 Condition : ${weatherData.description}`,
-                        });
+            });
         }
 
+        // --- 2. DISTANCE ---
         if (intent === "distance") {
             const distanceKm = await getDistance(data.origin, data.destination);
             return res.json({
@@ -34,6 +39,7 @@ router.post("/", async (req, res) => {
             });
         }
 
+        // --- 3. FLIGHTS ---
         if (intent === "flights") {
             const trip = await Trip.findOne({
                 destination: { $regex: data.destination, $options: "i" },
@@ -44,6 +50,7 @@ router.post("/", async (req, res) => {
             return res.json({ reply: `✈️ Flights to ${trip.destination}: ${flights}` });
         }
 
+        // --- 4. HOTELS ---
         if (intent === "hotels") {
             const hotels = await Hotel.find({
                 destination: { $regex: data.destination, $options: "i" },
@@ -56,11 +63,22 @@ router.post("/", async (req, res) => {
             return res.json({ reply: `🏨 Hotels in ${data.destination}: ${hotelList}` });
         }
 
-        return res.status(400).json({ reply: "No specific intent found." });
+        // --- 5. GENERAL AI CHAT (The New Part) ---
+        if (intent === "general_chat") {
+            const prompt = data.message; 
+            
+            const result = await model.generateContent(prompt);
+            const response = await result.response;
+            const text = response.text();
+
+            return res.json({ reply: text });
+        }
+
+        return res.status(400).json({ reply: "I didn't understand that request." });
 
     } catch (err) {
         console.error("❌ Chat intent error:", err.message);
-        return res.status(500).json({ reply: "Something went wrong." });
+        return res.status(500).json({ reply: "Something went wrong with the AI." });
     }
 });
 
